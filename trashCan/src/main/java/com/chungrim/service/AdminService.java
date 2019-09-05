@@ -3,5 +3,7 @@ package com.chungrim.service;
 import com.chungrim.vo.AdminVO;
 
 public interface AdminService {
-	public AdminVO selectAdminInfo() throws Exception;
+	
+	// 로그인 처리
+	public AdminVO adminLogin(AdminVO adminVO) throws Exception;
 }

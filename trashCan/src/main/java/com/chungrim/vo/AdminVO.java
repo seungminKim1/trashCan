@@ -1,5 +1,6 @@
 package com.chungrim.vo;
-//관리자 테이블 vo
+
+// 관리자 테이블 VO
 public class AdminVO {
 	private String adminId;
 	private String adminPassword;
