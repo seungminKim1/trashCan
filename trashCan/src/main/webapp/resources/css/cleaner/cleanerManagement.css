@@ -1,0 +1,35 @@
+@charset "UTF-8";
+.cleanerContainer {
+	margin: 0 auto;
+	width : 50%;
+	height : 100%;
+	background-color: white;
+	padding-top : 40px;
+}
+.cleanerManagementTable {
+	margin : 0 auto;		
+	border: 1px solid white;	
+}h1 {
+	font-family: 'nanum square';
+	color : #2DB400;
+	font-size: 35px;
+}
+tr {
+	height: 50px;
+}
+td {
+	width: 100px;
+	padding : 10px 0;
+	font-family: 'nanum square';
+	background-color: white;
+}
+td a{
+	text-decoration: none;
+	font-family: 'nanum square';
+	color : black;
+}
+td a:hover {
+	color : #2DB400;
+}
+
+

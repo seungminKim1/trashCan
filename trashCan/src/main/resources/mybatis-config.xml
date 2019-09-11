@@ -3,9 +3,8 @@
     PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-config.dtd">
     <configuration>
-    
 	 	<typeAliases>
             <typeAlias type="com.chungrim.vo.AdminVO" alias="adminVO"/>
+            <typeAlias type="com.chungrim.vo.RaspberrypiVO" alias="piVO"/>
         </typeAliases>
-        
     </configuration>

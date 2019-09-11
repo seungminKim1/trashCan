@@ -16,6 +16,7 @@ public class AdminDAO {
 	
 	// 로그인 처리
 	public AdminVO adminLogin(AdminVO adminVO) throws Exception {
+		
 		return sqlSession.selectOne(Namespace+".loginCheck", adminVO);
 	}
 }
