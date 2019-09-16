@@ -25,7 +25,7 @@
 				</li>
 				<li><a>사용자</a>
 					<ul>
-						<li><a href="">관리</a></li>
+						<li><a href="<c:url value='/cleaner/cleanerList.do'/>">관리</a></li>
 						<li><a href="">승인요청</a></li>
 					</ul>
 				</li>
