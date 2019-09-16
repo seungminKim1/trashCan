@@ -67,7 +67,7 @@
 											</c:forEach>
 										</select>
 										<label>남/여</label>
-										<select name="gender" id="gender">
+										<select name="gender" id="gender">	
 											<option>--선택--</option>
 											<c:forEach var="gender" items="${gender}" varStatus="status">	
 												<option value="${gender.genderNum}">${gender.genderName}</option>

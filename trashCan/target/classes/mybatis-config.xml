@@ -6,5 +6,6 @@
 	 	<typeAliases>
             <typeAlias type="com.chungrim.vo.AdminVO" alias="adminVO"/>
             <typeAlias type="com.chungrim.vo.RaspberrypiVO" alias="piVO"/>
+            <typeAlias type="com.chungrim.vo.CleanerVO" alias="cleanerVO"/>
         </typeAliases>
     </configuration>

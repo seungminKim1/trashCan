@@ -22,13 +22,13 @@ h1 {
 .raspberrypiForm td {
 	font-family: 'Nanum Square';
 	padding: 10px 0;
+	color : #666666;
 }
 
 td input {
 	width: 250px;
 	height: 20px;
 }
-
 .submit {
 	width: 173px;
 	height: 35px;

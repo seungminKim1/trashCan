@@ -10,7 +10,7 @@
 
 .raspberrypiManagementTable {
 	margin: 0 auto;
-	border: 1px solid black;
+	border: 1px solid #f1f3f6;
 }
 
 h1 {
@@ -29,6 +29,7 @@ td {
 	padding: 10px 0;
 	font-family: 'nanum square';
 	background-color: white;
+	border: 1px solid #f1f3f6;
 }
 
 td a {

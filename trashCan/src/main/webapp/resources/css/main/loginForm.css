@@ -22,7 +22,6 @@ h1 {
 .loginForm div input {
 	width: 250px;
 	height: 35px;
-	font-family: 'Nanum Square';
 }
 
 .submit {
@@ -31,4 +30,5 @@ h1 {
 	background-color: #2DB400;
 	border: none;
 	color: white;
+	font-family: 'Nanum Square';
 }

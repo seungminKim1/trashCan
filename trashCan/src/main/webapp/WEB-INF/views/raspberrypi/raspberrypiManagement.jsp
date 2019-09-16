@@ -18,7 +18,7 @@
 				<%@ include file="/WEB-INF/views/include/include-header.jsp"%>
 				<div class="content">
 					<div class="raspberrypiContainer">
-						<table class="raspberrypiManagementTable" border="1">
+						<table class="raspberrypiManagementTable">
 							<tr>
 								<td><strong>라즈베리파이IP</strong></td>
 								<td><strong>장소</strong></td>
