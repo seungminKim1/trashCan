@@ -15,7 +15,8 @@
 	</c:if>
 	<c:if test="${msg == 'insertSuccess'}">
 		<script type="text/javascript">
-			window.location.href="<c:url value='/raspberrypi/Management.do'/>"	
+			alert("등록 성공");
+			window.location.href="<c:url value='/raspberrypi/RegisterForm.do'/>"	
 		</script>
 	</c:if>
 	<c:if test="${msg == 'updateFail'}">

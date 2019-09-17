@@ -42,7 +42,7 @@ public class RaspberrypiController {
 		return mav;
 	}
 
-	// selectBox Detail 가져오기
+	// 등록 Form selectBox Detail 가져오기
 	@RequestMapping(value = "/raspberrypi/detailList.do")
 	public @ResponseBody List<RaspberrypiVO> detailList(@RequestParam(value = "fkPlaceSeq") Integer fkPlaceSeq) throws Exception {
 		List<RaspberrypiVO> detail = piService.getDetailList(fkPlaceSeq);
@@ -74,15 +74,70 @@ public class RaspberrypiController {
 		return mav;
 	}
 	
-	// 라즈베리파이 관리(리스트)
+	// 관리 view 라즈베리파이 정보 가져오기(전체 다 선택)
+	@RequestMapping(value = "/raspberrypi/managementPi.do")
+	public @ResponseBody List<RaspberrypiVO> managementPi(@RequestParam(value = "fkFloorSeq") Integer fkFloorSeq, 
+			@RequestParam(value = "fkDetailSeq") Integer fkDetailSeq, @RequestParam(value = "fkGenderNum") Integer fkGenderNum, 
+			@RequestParam(value = "fkPlaceSeq") Integer fkPlaceSeq) throws Exception {
+		RaspberrypiVO piVO = new RaspberrypiVO();
+		
+		piVO.setPlaceSeq(fkPlaceSeq);
+		piVO.setDetailSeq(fkDetailSeq);
+		piVO.setFloorSeq(fkFloorSeq);
+		piVO.setGenderNum(fkGenderNum);
+		
+		List<RaspberrypiVO> raspberrypi = piService.managementPi(piVO);
+
+		return raspberrypi;
+	}
+	
+	// 관리 view 라즈베리파이 정보 가져오기(place만 선택)
+	@RequestMapping(value = "/raspberrypi/managementPiPlace.do")
+	public @ResponseBody List<RaspberrypiVO> managementPiPlace(@RequestParam(value = "fkPlaceSeq") Integer fkPlaceSeq) throws Exception {
+		
+		List<RaspberrypiVO> raspberrypi = piService.managementPiPlace(fkPlaceSeq);
+
+		return raspberrypi;
+	}
+	
+	// 관리 view 라즈베리파이 정보 가져오기(place, detail 선택)
+	@RequestMapping(value = "/raspberrypi/managementPiDetail.do")
+	public @ResponseBody List<RaspberrypiVO> managementPiDetail(@RequestParam(value = "fkDetailSeq") Integer fkDetailSeq, 
+			@RequestParam(value = "fkPlaceSeq") Integer fkPlaceSeq) throws Exception {
+		RaspberrypiVO piVO = new RaspberrypiVO();
+		
+		piVO.setPlaceSeq(fkPlaceSeq);
+		piVO.setDetailSeq(fkDetailSeq);
+		
+		List<RaspberrypiVO> raspberrypi = piService.managementPiDetail(piVO);
+
+		return raspberrypi;
+	}
+	
+	// 관리 view 라즈베리파이 정보 가져오기(place, detail, floor 선택)
+	@RequestMapping(value = "/raspberrypi/managementPiFloor.do")
+	public @ResponseBody List<RaspberrypiVO> managementPiFloor(@RequestParam(value = "fkFloorSeq") Integer fkFloorSeq, 
+			@RequestParam(value = "fkDetailSeq") Integer fkDetailSeq, @RequestParam(value = "fkPlaceSeq") Integer fkPlaceSeq) throws Exception {
+		RaspberrypiVO piVO = new RaspberrypiVO();
+		
+		piVO.setPlaceSeq(fkPlaceSeq);
+		piVO.setDetailSeq(fkDetailSeq);
+		piVO.setFloorSeq(fkFloorSeq);
+		
+		List<RaspberrypiVO> raspberrypi = piService.managementPiFloor(piVO);
+
+		return raspberrypi;
+	}
+	
+	// 라즈베리파이 관리 view
 	@RequestMapping(value = "/raspberrypi/Management.do")
-	public ModelAndView piList() throws Exception {
-		List<RaspberrypiVO> raspberrypi = new ArrayList<RaspberrypiVO>();
-		raspberrypi = piService.getPiList();
+	public ModelAndView ManagementView() throws Exception {
+		List<RaspberrypiVO> piPlace = new ArrayList<RaspberrypiVO>();
+		piPlace = piService.managementPlace();
 		ModelAndView mav = new ModelAndView();
 
 		mav.setViewName("raspberrypi/raspberrypiManagement");
-		mav.addObject("raspberrypi", raspberrypi);
+		mav.addObject("place", piPlace);
 
 		return mav;
 	}
@@ -129,5 +184,31 @@ public class RaspberrypiController {
 		}
 		
 		return mav;
+	}
+	
+	// 관리 selectBox Detail 가져오기
+	@RequestMapping(value = "/raspberrypi/managementDetail.do")
+	public @ResponseBody List<RaspberrypiVO> managementDetail(@RequestParam(value = "fkPlaceSeq") Integer fkPlaceSeq) throws Exception {
+		List<RaspberrypiVO> detail = piService.managementDetail(fkPlaceSeq);
+		return detail;
+	}
+	
+	// 관리 selectBox Floor 가져오기
+	@RequestMapping(value = "/raspberrypi/managementFloor.do")
+	public @ResponseBody List<RaspberrypiVO> managementFloor(@RequestParam(value = "fkDetailSeq") Integer fkDetailSeq) throws Exception {
+		List<RaspberrypiVO> floor = piService.managementFloor(fkDetailSeq);
+		return floor;
+	}
+	
+	// 관리 selectBox Gender 가져오기
+	@RequestMapping(value = "/raspberrypi/managementGender.do")
+	public @ResponseBody List<RaspberrypiVO> managementGender(@RequestParam(value = "fkFloorSeq") Integer fkFloorSeq, 
+			@RequestParam(value = "fkDetailSeq") Integer fkDetailSeq) throws Exception {
+		RaspberrypiVO piVO = new RaspberrypiVO();
+		
+		piVO.setDetailSeq(fkDetailSeq);
+		piVO.setFloorSeq(fkFloorSeq);
+		List<RaspberrypiVO> gender = piService.managementGender(piVO);
+		return gender;
 	}
 }
