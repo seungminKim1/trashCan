@@ -31,9 +31,9 @@
 				<li><a href="">매핑</a></li>
 				<li><a>통계</a>
 					<ul id = "sub_menu3">
-						<li><a href="/livestatus/">실시간</a></li>
-						<li><a href="">일간</a></li>
-						<li><a href="">월간</a></li>
+						<li><a href="<c:url value='/livestatus/'/>">실시간</a></li>
+						<li><a href="<c:url value='/statistics/statisticsToday.do'/>">일간</a></li>
+						<li><a href="<c:url value='/statistics/statisticsMonth.do'/>">월간</a></li>
 					</ul>
 				</li>
 			</ul>

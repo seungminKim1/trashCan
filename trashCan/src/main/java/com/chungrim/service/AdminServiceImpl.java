@@ -1,7 +1,6 @@
 package com.chungrim.service;
 
 import javax.inject.Inject;
-import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Service;
 

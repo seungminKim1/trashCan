@@ -7,13 +7,11 @@ import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.chungrim.service.CleanerService;
 import com.chungrim.vo.CleanerVO;
-
 
 @Controller
 public class CleanerController {
@@ -30,7 +28,7 @@ public class CleanerController {
 			mav.setViewName("cleaner/cleanerList");
 			mav.addObject("cleaner", cleanerVO);
 		} else {
-			mav.setViewName("main/mainMenu");
+			mav.setViewName("main/main");
 		}
 		return mav;
 	}
