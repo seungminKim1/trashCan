@@ -7,7 +7,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/main/main.css"/>">
-	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/raspberrypi/raspberrypiManagement.css"/>">
+	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/statistics/livestatus.css"/>">
 	<link rel="stylesheet" href="<c:url value="https://fonts.googleapis.com/css?family=Baloo&display=swap"/>">
 	<link rel="stylesheet" href="<c:url value="//cdn.rawgit.com/hiun/NanumSquare/master/nanumsquare.css"/>">
 	<!-- RawGit CDN chart.css -->
@@ -20,20 +20,29 @@
 			<div class="wrapper">
 				<%@ include file="/WEB-INF/views/include/include-header.jsp"%>
 				<div class="content">
-					<div class="raspberrypiContainer">
-						<select id="place" name="place">
-							<option>--장소선택--</option>
-							<c:forEach var="place" items="${place}" varStatus="status">	
-								<option value="${place.placeSeq}">${place.placeName}</option>
-							</c:forEach>
-						</select>
-						<select name="detail" id="detail">
-							<option>--세부장소선택--</option>
-						</select>
-						<div class="charts charts--vertical" id="chart">
-							<c:forEach var="list" items="${list }" varStatus="status">
-								<div class="charts__chart chart--p${list.trashAmount }"><span class="charts__percent">${list.raspberrypiIp }</span></div>
-							</c:forEach>
+					<div class="livestatusContainer">
+						<div class = "livestatusContent">
+							<select id="place" name="place">
+								<option>--장소선택--</option>
+								<c:forEach var="place" items="${place}" varStatus="status">	
+									<option value="${place.placeSeq}">${place.placeName}</option>
+								</c:forEach>
+							</select>
+							<select name="detail" id="detail">
+								<option>--세부장소선택--</option>
+							</select>
+							<div>
+								<c:if test="${list != null}">
+									<div  id="chart">
+										<c:forEach var="list" items="${list }" varStatus="status">
+										<div class="charts charts--vertical">
+											<div class="charts__chart chart--p${list.trashAmount } chart--green"></div>
+											<div>${list.raspberrypiIp }</div>
+										</div>
+										</c:forEach>
+									</div>
+								</c:if>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -61,7 +70,7 @@
 					dataType : 'json',
 					success : function(data){
 						for ( i = 0; i < data.length; i++) {
-							$("#chart").append("<div class='charts__chart chart--p" + data[i].trashAmount +"'><span class='charts__percent'>" + data[i].raspberrypiIp +"</span></div>");
+							$("#chart").append("<div class='charts charts--vertical'><div class='charts__chart chart--p" + data[i].trashAmount +" chart--green'></div><div>" + data[i].raspberrypiIp +"</div></div>");
 						}
 					},error:function(request,status,error){
 				    	alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
@@ -70,7 +79,7 @@
 				
 			} else {
 				var placeSeq = $("#place option:selected").val();
-				
+				 
 				$.ajax({
 					url : 'selectOpt.do',
 					data : {placeSeq : placeSeq},
@@ -94,7 +103,7 @@
 							dataType : 'json',
 							success : function(data){
 								for ( l = 0; l < data.length; l++) {
-									$("#chart").append("<div class='charts__chart chart--p" + data[l].trashAmount +"'><span class='charts__percent'>" + data[l].raspberrypiIp +"</span></div>");
+									$("#chart").append("<div class='charts charts--vertical'><div class='charts__chart chart--p" + data[l].trashAmount +" chart--green'></div><div>" + data[l].raspberrypiIp +"</div></div>");
 								}
 							},error:function(request,status,error){
 						    	alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
@@ -124,7 +133,7 @@
 					dataType : 'json',
 					success : function(data){
 						for ( i = 0; i < data.length; i++) {
-							$("#chart").append("<div class='charts__chart chart--p" + data[i].trashAmount +"'><span class='charts__percent'>" + data[i].raspberrypiIp +"</span></div>");
+							$("#chart").append("<div class='charts charts--vertical'><div class='charts__chart chart--p" + data[i].trashAmount +" chart--green'></div><div>" + data[i].raspberrypiIp +"</div></div>");
 						}
 					},error:function(request,status,error){
 				    	alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
@@ -142,7 +151,7 @@
 					dataType : 'json',
 					success : function(data){
 						for ( i = 0; i < data.length; i++) {
-							$("#chart").append("<div class='charts__chart chart--p" + data[i].trashAmount +"'><span class='charts__percent'>" + data[i].raspberrypiIp +"</span></div>");
+							$("#chart").append("<div class='charts charts--vertical'><div class='charts__chart chart--p" + data[i].trashAmount +" chart--green'></div><div>" + data[i].raspberrypiIp +"</div></div>");
 						}
 					},error:function(request,status,error){
 				    	alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);

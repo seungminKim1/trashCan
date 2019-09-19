@@ -1,0 +1,13 @@
+@charset "UTF-8";
+.livestatusContainer {
+	margin : 0 auto;
+	width: 50%;
+	height : 100%;
+	background-color: white;
+}
+.livestatusContent {
+	padding-top: 150px;
+}
+#chart{
+	padding : 100px 10px 0 10px;
+}
