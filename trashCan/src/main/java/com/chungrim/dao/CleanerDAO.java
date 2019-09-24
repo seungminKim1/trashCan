@@ -23,12 +23,43 @@ public class CleanerDAO {
 		
 	}
 	public int cleanerDelete(String id) throws Exception{
-		/*
-		 * int x = 0; boolean state= false;
-		 * x=sqlSession.delete(Namespace+".cleanerDelete",id); if(x>0) { state= true;
-		 * return state; } else { return state; }
-		 */
-		return sqlSession.delete(Namespace+".cleanerDelete",id);
+		
+		int x = 0;
+		x = sqlSession.delete(Namespace + ".cleanerDelete", id);
+		
+		return x;
 	}
-
+	public int cleanerInsert(CleanerVO cleanerVO) throws Exception{
+		int state= sqlSession.insert(Namespace + ".cleanerInsert", cleanerVO); 
+		
+		int x = 0;
+		
+		if(state >0) {
+			x = 1;
+			return x;
+		}
+		
+		return x;
+	}
+	
+	public int cleanerLicenseUpdate(CleanerVO cleanerVO) throws Exception{
+		int state= sqlSession.update(Namespace + ".cleanerLicenseUpdate", cleanerVO);
+		
+		int x = 0;
+		
+		if(state >0) {
+			x = 1;
+			return x;
+		}
+		
+		return x;
+	}
+	
+	public List<CleanerVO> cleanerLicenseList() throws Exception{
+		
+		return sqlSession.selectList(Namespace+".cleanerLicenseList");
+		
+	}
+	
+	
 }

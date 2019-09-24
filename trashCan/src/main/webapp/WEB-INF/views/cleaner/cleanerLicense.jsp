@@ -23,30 +23,33 @@
 			<div class="wrapper">
 				<%@ include file="/WEB-INF/views/include/include-header.jsp"%>
 				<div class="content">
-					<table border="1">
-						<c:forEach items="${cleaner}" var="cleaner">
-							<tr>
+				<div class="cleanerContainer">
+			<h1>가입 승인 리스트</h1>
+					<table class="cleanerManagementTable">
+					
 							<tr>
 								<th>아이디</th>
 								<th>비밀번호</th>
 								<th>이름</th>
 								<th>연락처</th>
 								<th>상태</th>
+								<th>승인여부</th>
 							</tr>
-
+							
+						<c:forEach items="${cleaner}" var="cleaner">
+							
 							<tr>
 								<td>${cleaner.cleanerId}</td>
 								<td>${cleaner.cleanerPassword }</td>
 								<td>${cleaner.cleanerName}</td>
 								<td>${cleaner.cleanerPhone}</td>
 								<td>${cleaner.cleanerStatus}</td>
-								<td><a href="cleanerDelete.do?id=${cleaner.cleanerId}">강제탈퇴</a></td>
+								<td><a href="cleanerLicenseUpdate.do?id=${cleaner.cleanerId}">승인</a></td>
 							</tr>
-
-
-							</tr>
+				
 						</c:forEach>
 					</table>
+					</div>
 				</div>
 			</div>
 		</c:when>

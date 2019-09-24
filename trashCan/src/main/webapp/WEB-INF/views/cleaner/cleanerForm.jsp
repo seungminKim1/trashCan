@@ -1,8 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ page import="java.util.*"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,7 +8,7 @@
 <link rel="stylesheet" type="text/css"
 	href="<c:url value="/resources/css/main/main.css"/>">
 <link rel="stylesheet" type="text/css"
-	href="<c:url value="/resources/css/cleaner/cleanerManagement.css"/>">
+	href="<c:url value="/resources/css/raspberrypi/raspberrypiManagement.css"/>">
 <link rel="stylesheet"
 	href="<c:url value="https://fonts.googleapis.com/css?family=Baloo&display=swap"/>">
 <link rel="stylesheet"
@@ -23,33 +20,25 @@
 			<div class="wrapper">
 				<%@ include file="/WEB-INF/views/include/include-header.jsp"%>
 				<div class="content">
-					<table border="1">
-						<c:forEach items="${cleaner}" var="cleaner">
-							<tr>
-							<tr>
-								<th>아이디</th>
-								<th>비밀번호</th>
-								<th>이름</th>
-								<th>연락처</th>
-								<th>상태</th>
-							</tr>
-
-							<tr>
-								<td>${cleaner.cleanerId}</td>
-								<td>${cleaner.cleanerPassword }</td>
-								<td>${cleaner.cleanerName}</td>
-								<td>${cleaner.cleanerPhone}</td>
-								<td>${cleaner.cleanerStatus}</td>
-								<td><a href="cleanerDelete.do?id=${cleaner.cleanerId}">강제탈퇴</a></td>
-							</tr>
-
-
-							</tr>
-						</c:forEach>
-					</table>
+					<form action="cleanerInsert.do" method="post">
+						<p>
+							아이디:<input type="text" id="cleanerId" name="cleanerId">
+						</p>
+						<p>
+							패스워드:<input type="password" id="cleanerPassword"
+								name="cleanerPassword">
+						</p>
+						<p>
+							이름:<input type="text" id="cleanerName" name="cleanerName">
+						</p>
+						<p>
+							번호:<input type="text" id="cleanerPhone" name="cleanerPhone">
+						</p>
+						<input type="submit" value="제출">
+					</form>
 				</div>
-			</div>
 		</c:when>
+		
 		<c:otherwise>
 			<script type="text/javascript">
 				window.location.href = "<c:url value='/'/>"

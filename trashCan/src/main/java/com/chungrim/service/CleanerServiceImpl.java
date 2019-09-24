@@ -26,4 +26,29 @@ public class CleanerServiceImpl implements CleanerService{
 			return cleanerDAO.cleanerDelete(id);
 		}
 
+		@Override
+		public int insertCleaner(CleanerVO cleanerVO) throws Exception {
+			// TODO Auto-generated method stub
+			return cleanerDAO.cleanerInsert(cleanerVO);
+		}
+		
+		@Override
+		public int UpdateCleaner(CleanerVO cleanerVO) throws Exception {
+			// TODO Auto-generated method stub
+			return cleanerDAO.cleanerLicenseUpdate(cleanerVO);
+		}
+		
+		@Override
+		public List<CleanerVO> cleanerLicenseList() throws Exception {
+			// TODO Auto-generated method stub
+			return cleanerDAO.cleanerLicenseList();
+		
+		}
+
+		@Override
+		public int cleanerLicenseUpdate(CleanerVO cleanerVO) throws Exception {
+			// TODO Auto-generated method stub
+			return cleanerDAO.cleanerLicenseUpdate(cleanerVO);
+		}
+
 	}
