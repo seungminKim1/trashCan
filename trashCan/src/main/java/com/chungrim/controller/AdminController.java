@@ -37,6 +37,7 @@ public class AdminController {
 		
 		if (adminVO != null) {
 			mav.setViewName("main/main");
+			mav.addObject("msg", "loginOk");
 			request.getSession().setAttribute("admin", adminVO);
 			request.getSession().setMaxInactiveInterval(60*30);
 		} else {

@@ -14,10 +14,33 @@
 <body>
 	<c:choose>
 		<c:when test="${admin != null}">
-			<div class="wrapper">
-				<%@ include file="/WEB-INF/views/include/include-header.jsp"%>
-				<div class="content"></div>
-			</div>
+			<c:if test="${msg == 'loginOk'}">
+				<script type="text/javascript">
+					window.location.href="<c:url value='/main/statisticsDayMain.do'/>"	
+				</script>
+			</c:if>
+			<c:if test="${msg == 'cleanerListFail'}">
+				<script type="text/javascript">
+					window.location.href="<c:url value='/main/statisticsDayMain.do'/>"	
+				</script>
+			</c:if>
+			<c:if test="${msg == 'cleanerDeleteOk'}">
+				<script type="text/javascript">
+					alert("삭제 성공")
+					window.location.href="<c:url value='/main/statisticsDayMain.do'/>"	
+				</script>
+			</c:if>
+			<c:if test="${msg == 'cleanerLicenseFail'}">
+				<script type="text/javascript">
+					window.location.href="<c:url value='/main/statisticsDayMain.do'/>"	
+				</script>
+			</c:if>
+			<c:if test="${msg == 'cleanerInsertOk'}">
+				<script type="text/javascript">
+					alert("삭제 성공")
+					window.location.href="<c:url value='/main/statisticsDayMain.do'/>"	
+				</script>
+			</c:if>
 		</c:when>
 		<c:otherwise>
 			<script type="text/javascript">

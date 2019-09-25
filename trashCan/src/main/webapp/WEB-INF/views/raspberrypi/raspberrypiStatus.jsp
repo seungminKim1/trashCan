@@ -42,7 +42,7 @@
 							<table class="raspberrypiManagementTable" border="1">
 								<tr>
 									<td><strong>라즈베리파이IP</strong></td>
-									<td><strong>장소</strong></td>
+									<td><strong>세부장소</strong></td>
 									<td><strong>디테일</strong></td>
 									<td><strong>층</strong></td>
 									<td><strong>남/여</strong></td>

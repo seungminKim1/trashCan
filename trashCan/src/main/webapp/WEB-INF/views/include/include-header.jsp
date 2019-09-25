@@ -11,7 +11,7 @@
 </head>
 <body>
 	<div class="logoMenu">
-		<a href="<c:url value='/main/main.do'/>" class="title">CHEONGLIM</a>
+		<a href="<c:url value='/main/statisticsDayMain.do'/>" class="title">CHEONGLIM</a>
 	</div>	
 	<div class="menu" >
 		<div class="menu_arr">
@@ -25,14 +25,14 @@
 				<li><a>사용자</a>
 					<ul id = "sub_menu2">
 						<li><a href="<c:url value='/cleaner/cleanerList.do'/>">관리</a></li>
-						<li><a href="">승인요청</a></li>
+						<li><a href="<c:url value='/cleaner/cleanerLicenseList.do'/>">승인요청</a></li>
 					</ul>
 				</li>
 				<li><a href="">매핑</a></li>
 				<li><a>통계</a>
 					<ul id = "sub_menu3">
 						<li><a href="<c:url value='/livestatus/'/>">실시간</a></li>
-						<li><a href="<c:url value='/statistics/statisticsToday.do'/>">일간</a></li>
+						<li><a href="<c:url value='/statistics/statisticsDay.do'/>">일간</a></li>
 						<li><a href="<c:url value='/statistics/statisticsMonth.do'/>">월간</a></li>
 					</ul>
 				</li>

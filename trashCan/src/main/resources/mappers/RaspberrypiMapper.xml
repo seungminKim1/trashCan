@@ -64,7 +64,7 @@
  	
  	<!-- 관리 view 라즈베리파이 정보 가져오기(전체 다 선택) -->
  	<select id="managementPi" resultType="piVO">
-        select
+        SELECT
 			A.RASPBERRYPI_IP AS raspberrypiIp,
 			A.RASPBERRYPI_STATUS AS raspberrypiStatus,
 		    B.PLACE_NAME AS placeName,
@@ -81,13 +81,15 @@
 			ON A.FK_FLOOR_SEQ = D.FLOOR_SEQ
 		JOIN GENDER E
 			ON A.FK_GENDER_NUM = E.GENDER_NUM
-		WHERE
-			A.FK_FLOOR_SEQ = #{floorSeq} AND A.FK_DETAIL_SEQ = #{detailSeq} AND A.FK_PLACE_SEQ = #{placeSeq} AND A.FK_GENDER_NUM = #{genderNum}
+		WHERE A.FK_FLOOR_SEQ = #{floorSeq} 
+			AND A.FK_DETAIL_SEQ = #{detailSeq} 
+			AND A.FK_PLACE_SEQ = #{placeSeq} 
+			AND A.FK_GENDER_NUM = #{genderNum}
     </select>
  	
  	<!-- 관리 view 라즈베리파이 정보 가져오기(place만 선택) -->
  	<select id="managementPiPlace" resultType="piVO">
-        select
+        SELECT
 			A.RASPBERRYPI_IP AS raspberrypiIp,
 			A.RASPBERRYPI_STATUS AS raspberrypiStatus,
 		    B.PLACE_NAME AS placeName,
@@ -110,7 +112,7 @@
     
     <!-- 관리 view 라즈베리파이 정보 가져오기(place, detail 선택) -->
  	<select id="managementPiDetail" resultType="piVO">
-        select
+        SELECT
 			A.RASPBERRYPI_IP AS raspberrypiIp,
 			A.RASPBERRYPI_STATUS AS raspberrypiStatus,
 		    B.PLACE_NAME AS placeName,
@@ -133,7 +135,7 @@
     
     <!-- 관리 view 라즈베리파이 정보 가져오기(place, detail, floor 선택) -->
  	<select id="managementPiFloor" resultType="piVO">
-        select
+        SELECT
 			A.RASPBERRYPI_IP AS raspberrypiIp,
 			A.RASPBERRYPI_STATUS AS raspberrypiStatus,
 		    B.PLACE_NAME AS placeName,
@@ -150,8 +152,9 @@
 			ON A.FK_FLOOR_SEQ = D.FLOOR_SEQ
 		JOIN GENDER E
 			ON A.FK_GENDER_NUM = E.GENDER_NUM
-		WHERE
-			A.FK_FLOOR_SEQ = #{floorSeq} AND A.FK_DETAIL_SEQ = #{detailSeq} AND A.FK_PLACE_SEQ = #{placeSeq}
+		WHERE A.FK_FLOOR_SEQ = #{floorSeq} 
+			AND A.FK_DETAIL_SEQ = #{detailSeq} 
+			AND A.FK_PLACE_SEQ = #{placeSeq}
     </select>
     
  	<!-- 라즈베리파이 정보 가져오기 -->

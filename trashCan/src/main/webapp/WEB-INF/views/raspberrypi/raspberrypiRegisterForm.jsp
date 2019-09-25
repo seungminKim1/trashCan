@@ -56,7 +56,7 @@
 												<option value="${place.placeSeq}">${place.placeName}</option>
 											</c:forEach>
 										</select>
-										<label>디테일</label>
+										<label>세부장소</label>
 										<select name="detail" id="detail">
 										</select>
 										<label>층</label>
