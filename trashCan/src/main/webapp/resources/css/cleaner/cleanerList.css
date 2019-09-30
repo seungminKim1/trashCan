@@ -6,13 +6,22 @@
 	background-color: white;
 	padding-top : 40px;
 }
-.cleanerManagementTable {
-	margin : 0 auto;		
-	border: 1px solid white;	
-}h1 {
+h1 {
 	font-family: 'nanum square';
 	color : #2DB400;
 	font-size: 35px;
+}
+.cleanerManagementTable {
+	margin : 30px auto;		
+	border: 1px solid #f1f3f6;
+	border-collapse: collapse;	
+}
+thead td {
+	background-color: #03cf5d;
+	color : white;
+}
+tbody tr:nth-child(even) td {
+	background-color : #F0FFF0;
 }
 tr {
 	height: 50px;
@@ -22,6 +31,7 @@ td {
 	padding : 10px 0;
 	font-family: 'nanum square';
 	background-color: white;
+	border: 1px solid #f1f3f6;
 }
 td a{
 	text-decoration: none;

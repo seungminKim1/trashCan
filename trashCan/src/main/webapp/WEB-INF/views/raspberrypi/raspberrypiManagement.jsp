@@ -19,6 +19,7 @@
 				<%@ include file="/WEB-INF/views/include/include-header.jsp"%>
 				<div class="content">
 					<div class="raspberrypiContainer">
+						<h3>라즈베리파이 관리</h3>
 						<label>장소</label>
 						<select id="place" name="place">
 							<option value="dump">--선택--</option>

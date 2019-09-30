@@ -38,6 +38,7 @@
 				<c:set var="raspberrypi" value="${raspberrypi}"></c:set>
 				<div class="content">
 					<div class="raspberrypiContainer">
+						<h3>라즈베리파이 상태값 변경</h3>
 						<form name="form_raspberrypi" action="<c:url value='/raspberrypi/update.do'/>" method="post" onsubmit="return doSubmit();">
 							<table class="raspberrypiManagementTable" border="1">
 								<tr>

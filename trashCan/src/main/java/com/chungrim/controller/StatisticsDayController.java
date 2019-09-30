@@ -12,15 +12,15 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.chungrim.service.StatisticsService;
-import com.chungrim.vo.*;
+import com.chungrim.vo.StatisticsVO;
 
 @Controller
-public class StatisticsController {
+public class StatisticsDayController {
 	
 	@Inject
 	private StatisticsService statisticsService;
 	
-	// 일별 통계  View 및 selectBox Month + 최대값 
+	// 일간 통계  View 및 selectBox Month + 최대값 
 	@RequestMapping(value = "/statistics/statisticsDay.do")
 	public ModelAndView dayView() throws Exception {
 		List<StatisticsVO> dayView = new ArrayList<StatisticsVO>();
@@ -39,7 +39,7 @@ public class StatisticsController {
 		return mav;
 	}
 	
-	// 일별 통계 View SelectBox Month
+	// 일간 통계 View SelectBox Month
 	@RequestMapping(value = "/statistics/daySelectMonth.do")
 	public @ResponseBody List<StatisticsVO> daySelectMonth() throws Exception {
 
@@ -51,7 +51,7 @@ public class StatisticsController {
 		return dayView;
 	}
 	
-	// 일별 통계 View SelectBox Day
+	// 일간 통계 View SelectBox Day
 	@RequestMapping(value = "/statistics/daySelectDay.do")
 	public @ResponseBody List<StatisticsVO> daySelectDay(@RequestParam(value = "month") String month) throws Exception {
 		
@@ -67,7 +67,7 @@ public class StatisticsController {
 		return day;
 	}
 	
-	// 일별 통계 View SelectBox Place + 최대값
+	// 일간 통계 View SelectBox Place + 최대값
 	@RequestMapping(value = "/statistics/daySelectPlace.do")
 	public @ResponseBody List<StatisticsVO> daySelectPlace(@RequestParam(value = "month") String month,
 			@RequestParam(value = "day") String day) throws Exception {
@@ -96,7 +96,7 @@ public class StatisticsController {
 		return placeView;
 	}
 	
-	// 일별 통계 View SelectBox Detail + 최대값
+	// 일간 통계 View SelectBox Detail + 최대값
 	@RequestMapping(value = "/statistics/daySelectDetail.do")
 	public @ResponseBody List<StatisticsVO> daySelectDetail(@RequestParam(value = "month") String month,
 			@RequestParam(value = "day") String day,
@@ -130,7 +130,7 @@ public class StatisticsController {
 		return detailView;
 	}
 	
-	// 일별 통계 View SelectBox Floor + 최대값
+	// 일간 통계 View SelectBox Floor + 최대값
 	@RequestMapping(value = "/statistics/daySelectFloor.do")
 	public @ResponseBody List<StatisticsVO> daySelectFloor(@RequestParam(value = "month") String month,
 			@RequestParam(value = "day") String day,
@@ -166,7 +166,7 @@ public class StatisticsController {
 		return floorView;
 	}
 	
-	// 일별 통계 View SelectBox Gender + 최대값
+	// 일간 통계 View SelectBox Gender + 최대값
 	@RequestMapping(value = "/statistics/daySelectGender.do")
 	public @ResponseBody List<StatisticsVO> daySelectGender(@RequestParam(value = "month") String month,
 			@RequestParam(value = "day") String day,
@@ -204,7 +204,7 @@ public class StatisticsController {
 		return genderView;
 	}
 	
-	// 일별 통계 View SelectBox All + 최대값
+	// 일간 통계 View SelectBox All + 최대값
 	@RequestMapping(value = "/statistics/daySelectAll.do")
 	public @ResponseBody List<StatisticsVO> daySelectAll(@RequestParam(value = "month") String month,
 			@RequestParam(value = "day") String day,

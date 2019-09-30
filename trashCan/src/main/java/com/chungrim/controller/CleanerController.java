@@ -101,12 +101,6 @@ public class CleanerController {
 		}
 		return mav;
 	}
-	
-	@RequestMapping(value = "/cleaner/cleanerForm.do")
-	public String registerForm() throws Exception {
-
-		return "cleaner/cleanerForm";
-	}
 
 }
 

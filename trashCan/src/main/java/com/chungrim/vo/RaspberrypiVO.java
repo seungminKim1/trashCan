@@ -11,7 +11,14 @@ public class RaspberrypiVO {
 	private String detailName;
 	private String floorName;
 	private String genderName;
+	private int mappingNum;
 	
+	public int getMappingNum() {
+		return mappingNum;
+	}
+	public void setMappingNum(int mappingNum) {
+		this.mappingNum = mappingNum;
+	}
 	public String getRaspberrypiIp() {
 		return raspberrypiIp;
 	}

@@ -1,14 +1,14 @@
 @charset "UTF-8";
 
 .raspberrypiForm {
-	margin: 10px auto;
+	margin: 0 auto;
 	width: 50%;
 	height: 100%;
 	background-color: white;
-	padding-top: 150px;
+	padding-top: 40px;
 }
 
-h1 {
+h3 {
 	font-family: 'Nanum Square';
 	color: #2DB400;
 	font-size: 35px;
@@ -22,13 +22,14 @@ h1 {
 .raspberrypiForm td {
 	font-family: 'Nanum Square';
 	padding: 10px 0;
-	color : #666666;
+	color: #666666;
 }
 
 td input {
 	width: 250px;
 	height: 20px;
 }
+
 .submit {
 	width: 173px;
 	height: 35px;

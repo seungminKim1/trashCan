@@ -18,7 +18,7 @@
 				<%@ include file="/WEB-INF/views/include/include-header.jsp"%>
 				<div class="content">
 					<div class="loginForm">
-						<h1>관리자 로그인</h1>
+						<h3>관리자 로그인</h3>
 						<form name="loginform" action="/adminLogin.do" method="post">
 							<div>
 								<input type="text" name="adminId" id="adminId" placeholder="아이디" />

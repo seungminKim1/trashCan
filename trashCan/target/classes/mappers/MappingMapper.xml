@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chungrim.mapper.MappingMapper">
+	<!-- raspberrypi 정보 가져오기 -->
+	<select id="selectPI" resultType = "piVO">
+		select 
+			r.raspberrypi_ip as raspberrypiIp,
+			p.place_name as placeName,
+			d.detail_name as detailName,
+			f.floor_name as floorName,
+			g.gender_name as genderName 
+		from 
+			raspberrypi r,
+			place p,
+			detail d,
+			floor f,
+			gender g
+		where
+			mapping_num != 1
+		and 
+			r.fk_place_seq = p.place_seq
+		and 
+			r.fk_detail_seq = d.detail_seq
+		and 
+			r.fk_floor_seq = f.floor_seq
+		and 
+			r.fk_gender_num = g.gender_Num		
+	</select>
+	
+	<select id="selectClean" resultType="cleanerVO">
+		SELECT 
+        	CLEANER_ID AS cleanerId,
+        	CLEANER_NAME AS cleanerName,
+        	CLEANER_PHONE_NUM AS cleanerPhone
+         FROM
+         
+       CLEANER 
+       
+       WHERE
+       		CLEANER_STATUS = 1
+	</select>
+	
+	<select id = "selectMap" resultType="mapVO">
+		SELECT
+			fk_raspberrypi_ip as raspberrypiIp,
+			fk_cleaner_id as cleanerId,
+			date_format(mapping_date,'%Y-%m-%d %T') as mappingDate
+		FROM
+			mapping
+	</select>
+	
+	<insert id="insertMap" parameterType="mapVO">
+		insert into 
+			mapping(fk_raspberrypi_ip,fk_cleaner_id)
+		values (#{raspberrypiIp},#{cleanerId})
+	</insert>
+	
+	<update id="mapComp" parameterType="String">
+		update raspberrypi
+		set mapping_num = 1
+		where raspberrypi_Ip = #{value}
+	</update>
+	
+	<delete id="deleteMap" parameterType="String">
+		DELETE
+		FROM
+			mapping
+		WHERE
+			fk_raspberrypi_ip = #{value}
+	</delete> 
+	
+	<update id="updateMap">
+		update raspberrypi
+		set mapping_num = 0
+		where raspberrypi_Ip = #{value}
+	</update>
+	
+</mapper>

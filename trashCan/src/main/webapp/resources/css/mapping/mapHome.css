@@ -1,0 +1,60 @@
+@charset "UTF-8";
+*{
+	font-family: 'Nanum Square';
+}
+.mappingContainer {
+	margin: 0 auto;
+	width: 50%;
+	height: 100%;
+	background-color: white;
+}
+.mappingContent {
+	padding-top: 10px;
+}
+h1 {
+	color: #2DB400;
+	font-size: 35px;
+}
+.mappingTable {
+	border : 1px solid gray;
+	margin: 0 auto;
+	border-collapse: collapse;
+}
+
+thead td {
+	background-color: #03cf5d;
+	color : white;
+}
+tbody tr:nth-child(even) td {
+	background-color : #F0FFF0;
+}
+tr {
+	height: 50px;
+}
+td {
+	width: 100px;
+	padding: 5px 0;
+	background-color: white;
+	border: 1px solid #f1f3f6;
+}
+
+td a {
+	text-decoration: none;
+	color: black;
+}
+#submit {
+	width: 173px;
+	height: 35px;
+	background-color: #2DB400;
+	border: none;
+	color: white;
+	margin-top: 20px;
+}
+#delete {
+	width: 173px;
+	height: 35px;
+	background-color: #2DB400;
+	border: none;
+	color: white;
+	margin-top: 10px;
+}

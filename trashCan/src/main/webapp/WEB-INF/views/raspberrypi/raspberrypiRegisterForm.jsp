@@ -45,6 +45,7 @@
 				<%@ include file="/WEB-INF/views/include/include-header.jsp"%>
 				<div class="content">
 					<div class="raspberrypiForm">
+						<h3>라즈베리파이 등록</h3>
 						<form name="form_raspberrypi" action="<c:url value='/raspberrypi/Insert.do'/>" method="post"> 
 							<table>
 								<tr>

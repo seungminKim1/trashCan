@@ -21,6 +21,7 @@
 				<%@ include file="/WEB-INF/views/include/include-header.jsp"%>
 				<div class="content">
 					<div class="raspberrypiContainer">
+						<h3>일간 통계</h3>
 						<label>월</label>
 						<select name="month" id="month">
 							<option value="dump">--선택--</option>
@@ -56,40 +57,40 @@
 									<c:choose>
 										<c:when test="${statisticsPercent > 75}">
 											<div class="charts charts--vertical">
-												<div class="charts__chart chart--p${statisticsPercent} chart--grey" style="color:white;">
-													${dayView.statisticsUseNum}회
+												<div class="charts__chart chart--p${statisticsPercent} chart--grey chart--hover chart--xl" style="color:white; margin:0 15px;">
+													<span class="charts__text">${dayView.statisticsUseNum}회</span>
 				  								</div>
-				  								<div style="font-size: 12px;">
+				  								<div style="font-size: 12px; margin:0 15px;">
 				  									${dayView.placeName}
 				  								</div>
 				  							</div>
 				  						</c:when>
 				  						<c:when test="${statisticsPercent <= 75 && statisticsPercent > 50}">
 											<div class="charts charts--vertical">
-												<div class="charts__chart chart--p${statisticsPercent} chart--blue" style="color:white;">
-													${dayView.statisticsUseNum}회
+												<div class="charts__chart chart--p${statisticsPercent} chart--blue chart--hover chart--xl" style="color:white; margin:0 15px;">
+													<span class="charts__text">${dayView.statisticsUseNum}회</span>
 				  								</div>
-				  								<div style="font-size: 12px;">
+				  								<div style="font-size: 12px; margin:0 15px;">
 				  									${dayView.placeName}
 				  								</div>
 				  							</div>
 				  						</c:when>
 				  						<c:when test="${statisticsPercent <= 50 && statisticsPercent > 25}">
 											<div class="charts charts--vertical">
-												<div class="charts__chart chart--p${statisticsPercent} chart--green" style="color:white;">
-													${dayView.statisticsUseNum}회
+												<div class="charts__chart chart--p${statisticsPercent} chart--green chart--hover chart--xl" style="color:white; margin:0 15px;">
+													<span class="charts__text">${dayView.statisticsUseNum}회</span>
 				  								</div>
-				  								<div style="font-size: 12px;">
+				  								<div style="font-size: 12px; margin:0 15px;">
 				  									${dayView.placeName}
 				  								</div>
 				  							</div>
 				  						</c:when>
 					  					<c:otherwise>
 											<div class="charts charts--vertical">
-												<div class="charts__chart chart--p${statisticsPercent} chart--yellow" style="color:white;">
-													${dayView.statisticsUseNum}회
+												<div class="charts__chart chart--p${statisticsPercent} chart--yellow chart--hover chart--xl" style="color:white; margin:0 15px;">
+													<span class="charts__text">${dayView.statisticsUseNum}회</span>
 				  								</div>
-				  								<div style="font-size: 12px;">
+				  								<div style="font-size: 12px; margin:0 15px;">
 				  									${dayView.placeName}
 				  								</div>
 				  							</div>

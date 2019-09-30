@@ -17,7 +17,26 @@
          FROM
          
        CLEANER 
+       
+       WHERE
+       		CLEANER_STATUS = 1
     </select>
+    
+    <select id="cleanerLicenseList" resultType="cleanerVO">
+        SELECT 
+        	CLEANER_ID AS cleanerId,
+        	CLEANER_PASSWORD  AS cleanerPassword,
+        	CLEANER_NAME AS cleanerName,
+        	CLEANER_STATUS AS cleanerStatus,
+        	CLEANER_PHONE_NUM AS cleanerPhone
+         FROM
+         
+       CLEANER
+       
+       WHERE
+       		CLEANER_STATUS = 2
+    </select>
+    
     <!-- select계열은 == resultType임 / 나머지 == parameterType -->
     <delete id="cleanerDelete" parameterType="cleanerVO">
     	delete 
@@ -28,4 +47,28 @@
     	
     </delete>
     
+    <insert id="cleanerInsert" parameterType="cleanerVO">
+    
+    	INSERT INTO 
+ 			CLEANER (
+	 			CLEANER_ID,
+	 			CLEANER_PASSWORD,
+	 			CLEANER_NAME,
+	 			CLEANER_PHONE_NUM
+ 			) VALUES (
+ 				#{cleanerId}, 
+ 				#{cleanerPassword}, 
+ 				#{cleanerName},  
+ 				#{cleanerPhone}
+ 			)
+    </insert>
+    
+    <update id="cleanerLicenseUpdate" parameterType="cleanerVO">
+    	UPDATE CLEANER
+    	
+    	SET  
+    		CLEANER_STATUS = 1
+    	WHERE
+    		CLEANER_ID = #{cleanerId}
+    </update>
 </mapper>

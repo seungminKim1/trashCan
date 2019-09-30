@@ -15,7 +15,14 @@ public class StatisticsVO {
 	private String month;
 	private String day;
 	private int max;
+	private int trashAmount;
 	
+	public int getTrashAmount() {
+		return trashAmount;
+	}
+	public void setTrashAmount(int trashAmount) {
+		this.trashAmount = trashAmount;
+	}
 	public int getMax() {
 		return max;
 	}
@@ -106,6 +113,7 @@ public class StatisticsVO {
 		return "StatisticsVO [raspberrypiIp=" + raspberrypiIp + ", placeSeq=" + placeSeq + ", detailSeq=" + detailSeq
 				+ ", floorSeq=" + floorSeq + ", genderNum=" + genderNum + ", placeName=" + placeName + ", detailName="
 				+ detailName + ", floorName=" + floorName + ", genderName=" + genderName + ", statisticsUseNum="
-				+ statisticsUseNum + ", date=" + date + ", month=" + month + ", day=" + day + ", max=" + max + "]";
+				+ statisticsUseNum + ", date=" + date + ", month=" + month + ", day=" + day + ", max=" + max
+				+ ", trashAmount=" + trashAmount + "]";
 	}
 }

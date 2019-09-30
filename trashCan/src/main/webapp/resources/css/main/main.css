@@ -1,12 +1,14 @@
 @charset "UTF-8";
 
+* {
+	font-family: 'Nanum Square';
+}
+
 body, html {
 	padding: 0;
 	margin: 0;
 	width: 100%;
 	height: 100%;
-	overflow-x: hidden;
-	overflow-y: hidden;
 }
 
 .wrapper {
@@ -35,9 +37,7 @@ body, html {
 	color: #2DB400;
 	font-size: 30px;
 	text-decoration: none;
-	font-weight: bold; <!--
-	font-family: 'Open Sans', sans-serif;
-	-->
+	font-weight: bold;
 }
 
 .menu {
@@ -104,6 +104,11 @@ body, html {
 #sub_menu3 {
 	position: absolute;
 	top: 20px;
+	right: 65px;
+}
+#sub_menu4 {
+	position: absolute;
+	top: 20px;
 	right: 55px;
 }
 
@@ -142,4 +147,16 @@ body, html {
 		width: 100%;
 		float: none;
 	}
+}
+
+.charts--vertical {
+	height: 250px;
+}
+
+.charts__text {
+	display: table;
+    position: relative; 
+    top: 50%;  
+    color: #ebeded;  
+    left: .75em;
 }

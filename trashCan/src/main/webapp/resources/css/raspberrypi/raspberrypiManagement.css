@@ -8,16 +8,25 @@
 	padding-top: 40px;
 }
 
-.raspberrypiManagementTable {
-	margin: 0 auto;
-	border: 1px solid #f1f3f6;
-}
-
-h1 {
+h3 {
 	font-family: 'nanum square';
 	color: #2DB400;
 	font-size: 35px;
-	padding-top: 30px;
+}
+
+.raspberrypiManagementTable {
+	margin: 0 auto;
+	border: 1px solid #f1f3f6;
+	border-collapse: collapse;
+}
+
+thead td {
+	background-color: #03cf5d;
+	color : white;
+}
+
+tbody tr:nth-child(even) td {
+	background-color : #F0FFF0;
 }
 
 tr {
@@ -40,4 +49,12 @@ td a {
 
 td a:hover {
 	color: #2DB400;
+}
+#selectPi {
+	font-size : 13px;
+	background-color: #2DB400;
+	border: none;
+	color: white;
+	width : 60px;
+	height : 20px;
 }
