@@ -21,6 +21,62 @@
        WHERE
        		CLEANER_STATUS = 1
     </select>
+    <select id="selectCleanerInfo" resultType="cleanerVO" parameterType="cleanerVO">
+    	SELECT 
+		    CLEANER_ID AS cleanerId,
+		    CLEANER_PASSWORD  AS cleanerPassword,
+		    CLEANER_NAME AS cleanerName,
+		    CLEANER_STATUS AS cleanerStatus,
+		    CLEANER_PHONE_NUM AS cleanerPhone
+		FROM
+		    CLEANER       
+		WHERE
+		    CLEANER_ID = #{cleanerId}
+		AND
+		    CLEANER_PASSWORD = #{cleanerPassword}
+    </select>
+    <select id="checkCleanerInfo" resultType="cleanerVO" parameterType="cleanerVO">
+    	SELECT 
+		    CLEANER_ID AS cleanerId
+		FROM
+		    CLEANER       
+		WHERE
+		    CLEANER_ID = #{cleanerId}
+    </select>
+    
+    <select id="selectCleanerDetailInfo" resultType="com.chungrim.vo.CleanerDetailVO" parameterType="cleanerVO">
+    	SELECT
+    		D.cleanerName,
+    		D.trashAmount,
+    		F.PLACE_NAME AS placeName,
+    		G.DETAIL_NAME AS detailName,
+    		H.FLOOR_NAME AS floorName,
+    		I.GENDER_NAME AS genderName
+    	FROM
+	    	(
+	    		SELECT
+				    A.CLEANER_NAME AS cleanerName,
+				    C.FK_RASPBERRYPI_IP AS fkRaspBerryPiIp,
+				    C.TRASH_AMOUNT AS trashAmount
+				FROM
+				    CLEANER A
+				JOIN MAPPING B
+				    ON A.CLEANER_ID = B.FK_CLEANER_ID
+				JOIN LIVE_STATUS_CHECK C
+				    ON B.FK_RASPBERRYPI_IP = C.FK_RASPBERRYPI_IP
+				WHERE A.CLEANER_ID = #{cleanerId}
+	    	) D
+    	JOIN RASPBERRYPI E
+    		ON D.fkRaspBerryPiIp = E.RASPBERRYPI_IP
+    	JOIN PLACE F
+    		ON E.FK_PLACE_SEQ = F.PLACE_SEQ
+    	JOIN DETAIL G
+    		ON E.FK_DETAIL_SEQ = G.DETAIL_SEQ
+    	JOIN FLOOR H
+    		ON E.FK_FLOOR_SEQ = H.FLOOR_SEQ
+    	JOIN GENDER I
+    		ON E.FK_GENDER_NUM = I.GENDER_NUM
+    </select>
     
     <select id="cleanerLicenseList" resultType="cleanerVO">
         SELECT 
@@ -54,12 +110,14 @@
 	 			CLEANER_ID,
 	 			CLEANER_PASSWORD,
 	 			CLEANER_NAME,
-	 			CLEANER_PHONE_NUM
+	 			CLEANER_PHONE_NUM,
+	 			CLEANER_TOKEN
  			) VALUES (
  				#{cleanerId}, 
  				#{cleanerPassword}, 
  				#{cleanerName},  
- 				#{cleanerPhone}
+ 				#{cleanerPhone},
+ 				#{cleanerToken}
  			)
     </insert>
     
@@ -71,4 +129,19 @@
     	WHERE
     		CLEANER_ID = #{cleanerId}
     </update>
+    
+    
+    <select id="selectToken" resultType="cleanerVO">
+    	SELECT
+		    A.CLEANER_TOKEN as cleanerToken
+		FROM
+		    CLEANER A
+		JOIN MAPPING B
+		    ON A.CLEANER_ID = B.FK_CLEANER_ID
+		JOIN LIVE_STATUS_CHECK C
+		    ON B.FK_RASPBERRYPI_IP = C.FK_RASPBERRYPI_IP
+		<![CDATA[
+		WHERE C.TRASH_AMOUNT < 10
+		]]>
+    </select>
 </mapper>

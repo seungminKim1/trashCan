@@ -8,15 +8,37 @@
 	padding-top: 40px;
 }
 
+.piManageCont {
+	margin : 0 auto;
+	width : 70%;
+	border : 1px solid #eee;
+	border-radius : 10px;
+	box-shadow: 0 5px 5px #f1f3f6;
+	padding-bottom : 30px;
+}
+.piListCont {
+	margin : 0 auto;
+	width : 70%;
+	padding : 50px;
+	border-radius : 10px;
+	border : 1px solid #eee;
+	box-shadow: 0 5px 5px #f1f3f6;
+}
+.piStatusCont {
+	margin : 170px auto;
+	width : 70%;
+	padding : 50px;
+	border-radius : 10px;
+	border : 1px solid #eee;
+	box-shadow: 0 5px 5px #f1f3f6;
+}
 h3 {
 	font-family: 'nanum square';
 	color: #2DB400;
-	font-size: 35px;
 }
 
 .raspberrypiManagementTable {
 	margin: 0 auto;
-	border: 1px solid #f1f3f6;
 	border-collapse: collapse;
 }
 
@@ -30,12 +52,12 @@ tbody tr:nth-child(even) td {
 }
 
 tr {
-	height: 50px;
+	height: 40px;
 }
 
 td {
 	width: 100px;
-	padding: 10px 0;
+	padding: 5px 0;
 	font-family: 'nanum square';
 	background-color: white;
 	border: 1px solid #f1f3f6;

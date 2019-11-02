@@ -1,25 +1,21 @@
 package com.chungrim.controller;
 
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
-import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
+import javax.inject.Inject;
 import javax.servlet.http.HttpServletResponse;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.chungrim.service.MappingService;
 import com.chungrim.vo.CleanerVO;
+import com.chungrim.vo.MappingPageVO;
 import com.chungrim.vo.MappingVO;
 import com.chungrim.vo.RaspberrypiVO;
 
@@ -28,17 +24,45 @@ import com.chungrim.vo.RaspberrypiVO;
 @RequestMapping("/mapping/*")
 public class MappingController {
 	
-		@Autowired 
+		@Inject
 		private MappingService mappingService;
 		
-		@RequestMapping("")
-		public String home(Model model) throws Exception {
+		@RequestMapping(value = "" ,method = { RequestMethod.GET})
+		public String home(Model model,@RequestParam(value = "piPageNum",required = false) String piPageNum) throws Exception {
+			//pi,cleaner list 페이징
 			List<RaspberrypiVO> pilist = new ArrayList<RaspberrypiVO>();
 			List<CleanerVO> clist = new ArrayList<CleanerVO>();
-			pilist = mappingService.selectPI();
+			int cPageNum = 1;
+			System.out.println("****************"+piPageNum+"================");
+			if(piPageNum != null) {
+				cPageNum = Integer.parseInt(piPageNum);
+			}
+			MappingPageVO pageVO = new MappingPageVO();
+			System.out.println("****************"+cPageNum+"***1****************");
+			pageVO.setTotalCount(mappingService.piCount());
+			pageVO.setPageNum(cPageNum-1);
+			System.out.println("****************"+cPageNum+"***2****************");
+			pageVO.setCurrentBlock(cPageNum);
+			pageVO.setLastBlock(pageVO.getTotalCount());
+			pageVO.prevNext(cPageNum);
+			pageVO.setStartPage(pageVO.getCurrentBlock());
+			pageVO.setEndPage(pageVO.getLastBlock(), pageVO.getCurrentBlock());
+			System.out.println("****************"+pageVO.getStartPage()+"***3****************");
+			System.out.println("****************"+pageVO.getEndPage()+"***4****************");
+			pilist = mappingService.selectPI(pageVO.getPageNum()*5);
 			clist = mappingService.selectClean();
+			System.out.println("****************"+mappingService.piCount()+"***5****************");
 			model.addAttribute("piList", pilist);
+			model.addAttribute("page",pageVO);
 			model.addAttribute("cList", clist);
+			
+			int piCount = mappingService.piCount();
+			int cleanCount = mappingService.cleanCount();
+			int mapCount = mappingService.mapCount();
+			model.addAttribute("piCount", piCount);
+			model.addAttribute("cleanCount", cleanCount);
+			model.addAttribute("mapCount", mapCount);
+			
 			return "mapping/mapHome";
 		}
 		
@@ -68,6 +92,14 @@ public class MappingController {
 			List<MappingVO> maplist = new ArrayList<MappingVO>();
 			maplist = mappingService.selectMap();
 			model.addAttribute("maplist",maplist);
+			
+			int piCount = mappingService.piCount();
+			int cleanCount = mappingService.cleanCount();
+			int mapCount = mappingService.mapCount();
+			model.addAttribute("piCount", piCount);
+			model.addAttribute("cleanCount", cleanCount);
+			model.addAttribute("mapCount", mapCount);
+			
 			return "mapping/mapList";
 		}
 		

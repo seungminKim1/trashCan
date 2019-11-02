@@ -1,102 +1,121 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/main/main.css"/>">
-	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/raspberrypi/raspberrypiManagement.css"/>">
-	<link rel="stylesheet" href="<c:url value="https://fonts.googleapis.com/css?family=Baloo&display=swap"/>">
-	<link rel="stylesheet" href="<c:url value="//cdn.rawgit.com/hiun/NanumSquare/master/nanumsquare.css"/>">
-	<link rel="stylesheet" href="<c:url value="https://cdn.rawgit.com/theus/chart.css/v1.0.0/dist/chart.css"/>">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="">
+	<meta name="author" content="Dashboard">
+	<meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+	
+	<!-- Bootstrap core CSS -->
+	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/assets/css/bootstrap.css"/>">
+	<!--external css-->
+	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/assets/font-awesome/css/font-awesome.css"/>">
+	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/assets/css/zabuto_calendar.css"/>">
+	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/assets/js/gritter/css/jquery.gritter.css"/>">
+	<link rel="stylesheet" type="text/css" href="<c:url value="/resources/assets/lineicons/style.css"/>">
+	<link rel="stylesheet" href="<c:url value="https://fonts.googleapis.com/css?family=Stylish&display=swap"/>">
+	
+	<!-- Custom styles for this template -->
+	<link href="<c:url value='/resources/assets/css/style.css'/>" rel="stylesheet">
+	<link href="<c:url value='/resources/assets/css/style-responsive.css'/>" rel="stylesheet">
+	
+	<script src="<c:url value='/resources/assets/js/chart-master/Chart.js'/>"></script>
 	<script type="text/javascript" src="<c:url value="/resources/jquery/jquery-3.3.1.min.js"/>"></script>
 </head>
 <body>
 	<c:choose>
 		<c:when test="${admin != null}">
-			<div class="wrapper">
+			<section id="container">
 				<%@ include file="/WEB-INF/views/include/include-header.jsp"%>
-				<div class="content">
-					<div class="raspberrypiContainer">
-						<h3>월간 통계</h3>
-						<label>월</label>
-						<select name="month" id="month">
-							<option value="dump">--선택--</option>
-							<c:forEach var="month" items="${month}" varStatus="status">	
-								<option value="${month.month}">${month.month}월</option>
-							</c:forEach>
-						</select>
-						<br>
-						<label>장소</label>
-						<select id="place" name="place">
-							<option value="dump">--선택--</option>
-						</select>
-						<label>세부장소</label>
-						<select name="detail" id="detail">
-							<option value="dump">--선택--</option>
-						</select>
-						<label>층</label>
-						<select name="floor" id="floor">
-							<option value="dump">--선택--</option>
-						</select>	
-						<label>남/여</label>
-						<select name="gender" id="gender">
-							<option value="dump">--선택--</option>
-						</select>
-						<div id="graphDiv" style="margin-top: 50px;">
-							<c:set var="monthMax" value="${monthMax.max}" />
-							<c:forEach var="monthView" items="${monthView}" varStatus="status">	
-								<fmt:parseNumber var="statisticsPercent" value="${monthView.statisticsUseNum / monthMax * 100}" integerOnly="true"/>
-									<c:choose>
-										<c:when test="${statisticsPercent > 75}">
-											<div class="charts charts--vertical">
-												<div class="charts__chart chart--p${statisticsPercent} chart--grey chart--hover chart--xl" style="color:white;">
-													<span class="charts__text">${monthView.statisticsUseNum}회</span>
-				  								</div>
-				  								<div style="font-size: 12px; margin:0 15px">
-				  									${monthView.placeName}
-				  								</div>
-				  							</div>
-				  						</c:when>
-				  						<c:when test="${statisticsPercent <= 75 && statisticsPercent > 50}">
-											<div class="charts charts--vertical">
-												<div class="charts__chart chart--p${statisticsPercent} chart--blue chart--hover chart--xl" style="color:white;">
-													<span class="charts__text">${monthView.statisticsUseNum}회</span>
-				  								</div>
-				  								<div style="font-size: 12px; margin:0 15px">
-				  									${monthView.placeName}
-				  								</div>
-				  							</div>
-				  						</c:when>
-				  						<c:when test="${statisticsPercent <= 50 && statisticsPercent > 25}">
-											<div class="charts charts--vertical">
-												<div class="charts__chart chart--p${statisticsPercent} chart--green chart--hover chart--xl" style="color:white;">
-													<span class="charts__text">${monthView.statisticsUseNum}회</span>
-				  								</div>
-				  								<div style="font-size: 12px; margin:0 15px">
-				  									${monthView.placeName}
-				  								</div>
-				  							</div>
-				  						</c:when>
-					  					<c:otherwise>
-											<div class="charts charts--vertical">
-												<div class="charts__chart chart--p${statisticsPercent} chart--yellow chart--hover chart--xl" style="color:white;">
-													<span class="charts__text">${monthView.statisticsUseNum}회</span>
-				  								</div>
-				  								<div style="font-size: 12px; margin:0 15px">
-				  									${monthView.placeName}
-				  								</div>
-				  							</div>
-										</c:otherwise>
-									</c:choose>
-							</c:forEach>
+				<!-- **********************************************************************************************************************************************************
+		      	MAIN CONTENT
+		      	*********************************************************************************************************************************************************** -->
+				<!--main content start-->
+				<section id="main-content">
+					<section class="wrapper">
+						<div class="form-panel" style="width: 1100px;">
+							<h1>월간 통계</h1>
+							<form name="form_raspberrypi" class="form-horizontal style-form">
+								<div class="form-group">
+									<label class="col-sm-2 col-sm-2 control-label">월</label>
+									<div>
+										<select name="month" id="month">
+											<option value="dump">--선택--</option>
+											<c:forEach var="month" items="${month}" varStatus="status">	
+												<option value="${month.month}">${month.month}월</option>
+											</c:forEach>
+										</select>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 col-sm-2 control-label">장소</label>
+									<div>
+										<select id="place" name="place">
+											<option value="dump">--선택--</option>
+										</select>
+									</div>
+								</div> 
+								<div class="form-group">
+									<label class="col-sm-2 col-sm-2 control-label">세부장소</label>
+									<div>
+										<select name="detail" id="detail">
+											<option value="dump">--선택--</option>
+										</select>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 col-sm-2 control-label">층</label>
+									<div>
+										<select name="floor" id="floor">
+											<option value="dump">--선택--</option>
+										</select>	
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 col-sm-2 control-label">남/여</label>
+									<div>
+										<select name="gender" id="gender">
+											<option value="dump">--선택--</option>
+										</select>	
+									</div>
+								</div> 		
+							</form>
 						</div>
-					</div>
-				</div>
-			</div>
+						<div class="col-lg-9 main-chart">
+							<div class="row mt">
+								<div class="custom-bar-chart" id="graphDiv">
+									<ul class="y-axis">
+										<li><span>100%</span></li>
+										<li><span>80%</span></li>
+										<li><span>60%</span></li>
+										<li><span>40%</span></li>
+										<li><span>20%</span></li>
+										<li><span>00%</span></li>
+									</ul>
+									<c:set var="monthMax" value="${monthMax.max}" />
+									<c:forEach var="monthView" items="${monthView}" varStatus="status">	
+									<fmt:parseNumber var="statisticsPercent" value="${monthView.statisticsUseNum / monthMax * 100}" integerOnly="true"/>
+										<div class="bar">
+											<div class="title"><strong>${monthView.placeName}</strong></div>
+											<div class="value tooltips" data-toggle="tooltip" data-placement="top">${statisticsPercent}%</div>
+											<div class="tooltip fade top in" role="tooltip" style="top: -50px; left: 5px; display: block;">
+												<div class="tooltip-arrow"></div>
+												<div class="tooltip-inner">${monthView.statisticsUseNum}회</div>
+											</div>
+										</div>
+									</c:forEach>
+								</div>
+							</div>		
+						</div>
+					</section>
+				</section>
+				<!--main content end-->
+			</section>
 		</c:when>
 		<c:otherwise>
 			<script type="text/javascript">
@@ -104,7 +123,27 @@
 			</script>
 		</c:otherwise>
 	</c:choose>
-</body>
+	
+	<!-- js placed at the end of the document so the pages load faster -->
+	<script src="<c:url value='/resources/assets/js/jquery.js'/>"></script>
+	<script src="<c:url value='/resources/assets/js/jquery-1.8.3.min.js'/>"></script>
+	<script src="<c:url value='/resources/assets/js/bootstrap.min.js'/>"></script>
+	<script class="include" type="text/javascript" src="<c:url value='/resources/assets/js/jquery.dcjqaccordion.2.7.js'/>"></script>
+	<script src="<c:url value='/resources/assets/js/jquery.scrollTo.min.js'/>"></script>
+	<script src="<c:url value='/resources/assets/js/jquery.nicescroll.js'/>" type="text/javascript"></script>
+	<script src="<c:url value='/resources/assets/js/jquery.sparkline.js'/>"></script>
 
-<script type="text/javascript" src="<c:url value="/resources/javascript/statistics/statisticsMonth.js"/>"></script>
+	<!--common script for all pages-->
+	<script src="<c:url value='/resources/assets/js/common-scripts.js'/>"></script>
+
+	<!--script for this page-->
+	<script src="<c:url value='/resources/assets/js/sparkline-chart.js'/>"></script>
+	<script src="<c:url value='/resources/assets/js/zabuto_calendar.js'/>"></script>
+	
+	<script src="<c:url value='/resources/assets/js/idk.js'/>"></script>
+	
+	<script type="text/javascript" src="<c:url value="/resources/javascript/statistics/statisticsMonth.js"/>"></script>
+	
+	<!--js end-->
+</body>
 </html>

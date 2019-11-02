@@ -24,62 +24,36 @@ $(function() {
 				success : function(data){
 					if (data.length >= 1) {
 						var max;
+						var contents = "";
 						
 						$("#graphDiv > *").remove();
+						
+						contents +=	"<ul class='y-axis'>";
+						contents +=	"<li><span>100%</span></li>";
+						contents +=	"<li><span>80%</span></li>";
+						contents +=	"<li><span>60%</span></li>";
+						contents +=	"<li><span>40%</span></li>";
+						contents +=	"<li><span>20%</span></li>";
+						contents +=	"<li><span>0%</span></li>";
+						contents +=	"</ul>";
+						
+						$("#graphDiv").append(contents);
 						
 						for (i = 0; i < data.length; i++) {
 							max = data[i].max;
 						}
 						for (i = 0; i < data.length -1; i++) {
-							
+
 							var percent = Math.floor(data[i].statisticsUseNum / max * 100);
-							var contents = "";
+							contents = "";
 							
-							if (percent > 75) {
-								contents += "<div class='charts charts--vertical'>";
-								contents += "<div class='charts__chart chart--p" + percent + " chart--grey chart--hover chart--xl'  style='color:white; margin:0 15px;'>";
-								contents += "<span class='charts__text'>" + data[i].statisticsUseNum + "회</span>";
-								contents += "</div>";
-								contents += "<div style='font-size: 12px; margin:0 15px'>";
-								contents += data[i].placeName;
-								contents += "</div>";
-								contents += "</div>";
-								
-								$("#graphDiv").append(contents);
-							} else if (percent > 50 && percent <= 75) {
-								contents += "<div class='charts charts--vertical'>";
-								contents += "<div class='charts__chart chart--p" + percent + " chart--blue chart--hover chart--xl' style='color:white; margin:0 15px;'>";
-								contents += "<span class='charts__text'>" + data[i].statisticsUseNum + "회</span>";
-								contents += "</div>";
-								contents += "<div style='font-size: 12px; margin:0 15px'>";
-								contents += data[i].placeName;
-								contents += "</div>";
-								contents += "</div>";
-								
-								$("#graphDiv").append(contents);
-							} else if (percent > 25 && percent <= 50) {
-								contents += "<div class='charts charts--vertical'>";
-								contents += "<div class='charts__chart chart--p" + percent + " chart--green chart--hover chart--xl' style='color:white; margin:0 15px;'>";
-								contents += "<span class='charts__text'>" + data[i].statisticsUseNum + "회</span>";
-								contents += "</div>";
-								contents += "<div style='font-size: 12px; margin:0 15px'>";
-								contents += data[i].placeName;
-								contents += "</div>";
-								contents += "</div>";
-								
-								$("#graphDiv").append(contents);
-							} else {
-								contents += "<div class='charts charts--vertical'>";
-								contents += "<div class='charts__chart chart--p" + percent + " chart--yellow chart--hover chart--xl' style='color:white; margin:0 15px;'>";
-								contents += "<span class='charts__text'>" + data[i].statisticsUseNum + "회</span>";
-								contents += "</div>";
-								contents += "<div style='font-size: 12px; margin:0 15px'>";
-								contents += data[i].placeName;
-								contents += "</div>";
-								contents += "</div>";
-								
-								$("#graphDiv").append(contents);
-							}
+							contents += "<div class='bar'>";
+							contents += "<div class='title'><strong>" + data[i].placeName + "</strong></div>";
+							contents += "<div class='value tooltips' data-original-title='" + data[i].statisticsUseNum + "회' data-toggle='tooltip' data-placement='top' style='height:" + percent + "%'></div>";
+							contents += "<div class='tooltip fade top in' role='tooltip' style='top: -50px; left: 5px; display: block;'><div class='tooltip-arrow'></div><div class='tooltip-inner'>"+ data[i].statisticsUseNum + "회</div></div>";
+							contents += "</div>";
+							
+							$("#graphDiv").append(contents);
 						}
 					} else {
 						$("#graphDiv > *").remove();
@@ -95,8 +69,21 @@ $(function() {
 				success : function(data){
 					if (data.length >= 1) {
 						var max;
+						var contents = "";
+						
 						$("#graphDiv > *").remove();
 						
+						contents +=	"<ul class='y-axis'>";
+						contents +=	"<li><span>100%</span></li>";
+						contents +=	"<li><span>80%</span></li>";
+						contents +=	"<li><span>60%</span></li>";
+						contents +=	"<li><span>40%</span></li>";
+						contents +=	"<li><span>20%</span></li>";
+						contents +=	"<li><span>0%</span></li>";
+						contents +=	"</ul>";
+						
+						$("#graphDiv").append(contents);
+							
 						for (i = 0; i < data.length; i++) {
 							max = data[i].max;
 						}
@@ -104,53 +91,15 @@ $(function() {
 							$("#place").append("<option value =" + data[i].placeSeq + ">" + data[i].placeName + "</option>")
 							
 							var percent = Math.floor(data[i].statisticsUseNum / max * 100);
-							var contents = "";
+							contents = "";
 							
-							if (percent > 75) {
-								contents += "<div class='charts charts--vertical'>";
-								contents += "<div class='charts__chart chart--p" + percent + " chart--grey chart--hover chart--xl' style='color:white; margin:0 15px;'>";
-								contents += "<span class='charts__text'>" + data[i].statisticsUseNum + "회</span>";
-								contents += "</div>";
-								contents += "<div style='font-size: 12px; margin:0 15px'>";
-								contents += data[i].placeName;
-								contents += "</div>";
-								contents += "</div>";
-								
-								$("#graphDiv").append(contents);
-							} else if (percent > 50 && percent <= 75) {
-								contents += "<div class='charts charts--vertical'>";
-								contents += "<div class='charts__chart chart--p" + percent + " chart--blue chart--hover chart--xl' style='color:white; margin:0 15px;'>";
-								contents += "<span class='charts__text'>" + data[i].statisticsUseNum + "회</span>";
-								contents += "</div>";
-								contents += "<div style='font-size: 12px; margin:0 15px'>";
-								contents += data[i].placeName;
-								contents += "</div>";
-								contents += "</div>";
-								
-								$("#graphDiv").append(contents);
-							} else if (percent > 25 && percent <= 50) {
-								contents += "<div class='charts charts--vertical'>";
-								contents += "<div class='charts__chart chart--p" + percent + " chart--green chart--hover chart--xl' style='color:white; margin:0 15px;'>";
-								contents += "<span class='charts__text'>" + data[i].statisticsUseNum + "회</span>";
-								contents += "</div>";
-								contents += "<div style='font-size: 12px; margin:0 15px'>";
-								contents += data[i].placeName;
-								contents += "</div>";
-								contents += "</div>";
-								
-								$("#graphDiv").append(contents);
-							} else {
-								contents += "<div class='charts charts--vertical'>";
-								contents += "<div class='charts__chart chart--p" + percent + " chart--yellow chart--hover chart--xl' style='color:white; margin:0 15px;'>";
-								contents += "<span class='charts__text'>" + data[i].statisticsUseNum + "회</span>";
-								contents += "</div>";
-								contents += "<div style='font-size: 12px; margin:0 15px'>";
-								contents += data[i].placeName;
-								contents += "</div>";
-								contents += "</div>";
-								
-								$("#graphDiv").append(contents);
-							}
+							contents += "<div class='bar'>";
+							contents += "<div class='title'><strong>" + data[i].placeName + "</strong></div>";
+							contents += "<div class='value tooltips' data-original-title='" + data[i].statisticsUseNum + "회' data-toggle='tooltip' data-placement='top' style='height:" + percent + "%'></div>";
+							contents += "<div class='tooltip fade top in' role='tooltip' style='top: -50px; left: 5px; display: block;'><div class='tooltip-arrow'></div><div class='tooltip-inner'>"+ data[i].statisticsUseNum + "회</div></div>";
+							contents += "</div>";
+							
+							$("#graphDiv").append(contents);							
 						}
 					} else {
 						$("#graphDiv > *").remove();
@@ -183,62 +132,36 @@ $(function() {
 				success : function(data){
 					if (data.length >= 1) {
 						var max;
+						var contents = "";
 						
 						$("#graphDiv > *").remove();
 						
+						contents +=	"<ul class='y-axis'>";
+						contents +=	"<li><span>100%</span></li>";
+						contents +=	"<li><span>80%</span></li>";
+						contents +=	"<li><span>60%</span></li>";
+						contents +=	"<li><span>40%</span></li>";
+						contents +=	"<li><span>20%</span></li>";
+						contents +=	"<li><span>0%</span></li>";
+						contents +=	"</ul>";
+						
+						$("#graphDiv").append(contents);
+							
 						for (i = 0; i < data.length; i++) {
 							max = data[i].max;
 						}
 						for (i = 0; i < data.length -1; i++) {
 							
 							var percent = Math.floor(data[i].statisticsUseNum / max * 100);
-							var contents = "";
+							contents = "";
 							
-							if (percent > 75) {
-								contents += "<div class='charts charts--vertical'>";
-								contents += "<div class='charts__chart chart--p" + percent + " chart--grey chart--hover chart--xl' style='color:white; margin:0 15px;'>";
-								contents += "<span class='charts__text'>" + data[i].statisticsUseNum + "회</span>";
-								contents += "</div>";
-								contents += "<div style='font-size: 12px; margin:0 15px'>";
-								contents += data[i].placeName;
-								contents += "</div>";
-								contents += "</div>";
-								
-								$("#graphDiv").append(contents);
-							} else if (percent > 50 && percent <= 75) {
-								contents += "<div class='charts charts--vertical'>";
-								contents += "<div class='charts__chart chart--p" + percent + " chart--blue chart--hover chart--xl' style='color:white; margin:0 15px;'>";
-								contents += "<span class='charts__text'>" + data[i].statisticsUseNum + "회</span>";
-								contents += "</div>";
-								contents += "<div style='font-size: 12px; margin:0 15px'>";
-								contents += data[i].placeName;
-								contents += "</div>";
-								contents += "</div>";
-								
-								$("#graphDiv").append(contents);
-							} else if (percent > 25 && percent <= 50) {
-								contents += "<div class='charts charts--vertical'>";
-								contents += "<div class='charts__chart chart--p" + percent + " chart--green chart--hover chart--xl' style='color:white; margin:0 15px;'>";
-								contents += "<span class='charts__text'>" + data[i].statisticsUseNum + "회</span>";
-								contents += "</div>";
-								contents += "<div style='font-size: 12px; margin:0 15px'>";
-								contents += data[i].placeName;
-								contents += "</div>";
-								contents += "</div>";
-								
-								$("#graphDiv").append(contents);
-							} else {
-								contents += "<div class='charts charts--vertical'>";
-								contents += "<div class='charts__chart chart--p" + percent + " chart--yellow chart--hover chart--xl' style='color:white; margin:0 15px;'>";
-								contents += "<span class='charts__text'>" + data[i].statisticsUseNum + "회</span>";
-								contents += "</div>";
-								contents += "<div style='font-size: 12px; margin:0 15px'>";
-								contents += data[i].placeName;
-								contents += "</div>";
-								contents += "</div>";
-								
-								$("#graphDiv").append(contents);
-							}
+							contents += "<div class='bar'>";
+							contents += "<div class='title'><strong>" + data[i].placeName + "</strong></div>";
+							contents += "<div class='value tooltips' data-original-title='" + data[i].statisticsUseNum + "회' data-toggle='tooltip' data-placement='top' style='height:" + percent + "%'></div>";
+							contents += "<div class='tooltip fade top in' role='tooltip' style='top: -50px; left: 5px; display: block;'><div class='tooltip-arrow'></div><div class='tooltip-inner'>"+ data[i].statisticsUseNum + "회</div></div>";
+							contents += "</div>";
+							
+							$("#graphDiv").append(contents);
 						}
 					} else {
 						$("#graphDiv > *").remove();
@@ -254,9 +177,20 @@ $(function() {
 				success : function(data){
 					if (data.length >= 1) {
 						var max;
-						
+						var contents = "";
 						$("#graphDiv > *").remove();
 						
+						contents +=	"<ul class='y-axis'>";
+						contents +=	"<li><span>100%</span></li>";
+						contents +=	"<li><span>80%</span></li>";
+						contents +=	"<li><span>60%</span></li>";
+						contents +=	"<li><span>40%</span></li>";
+						contents +=	"<li><span>20%</span></li>";
+						contents +=	"<li><span>0%</span></li>";
+						contents +=	"</ul>";
+						
+						$("#graphDiv").append(contents);
+							
 						for (i = 0; i < data.length; i++) {
 							max = data[i].max;
 						}
@@ -264,53 +198,15 @@ $(function() {
 							$("#detail").append("<option value =" + data[i].detailSeq + ">" + data[i].detailName + "</option>")
 							
 							var percent = Math.floor(data[i].statisticsUseNum / max * 100);
-							var contents = "";
+							contents = "";
 							
-							if (percent > 75) {
-								contents += "<div class='charts charts--vertical'>";
-								contents += "<div class='charts__chart chart--p" + percent + " chart--grey chart--hover chart--xl' style='color:white; margin:0 15px;'>";
-								contents += "<span class='charts__text'>" + data[i].statisticsUseNum + "회</span>";
-								contents += "</div>";
-								contents += "<div style='font-size: 12px; margin:0 15px'>";
-								contents += data[i].detailName;
-								contents += "</div>";
-								contents += "</div>";
-								
-								$("#graphDiv").append(contents);
-							} else if (percent > 50 && percent <= 75) {
-								contents += "<div class='charts charts--vertical'>";
-								contents += "<div class='charts__chart chart--p" + percent + " chart--blue chart--hover chart--xl' style='color:white; margin:0 15px;'>";
-								contents += "<span class='charts__text'>" + data[i].statisticsUseNum + "회</span>";
-								contents += "</div>";
-								contents += "<div style='font-size: 12px; margin:0 15px'>";
-								contents += data[i].detailName;
-								contents += "</div>";
-								contents += "</div>";
-								
-								$("#graphDiv").append(contents);
-							} else if (percent > 25 && percent <= 50) {
-								contents += "<div class='charts charts--vertical'>";
-								contents += "<div class='charts__chart chart--p" + percent + " chart--green chart--hover chart--xl' style='color:white; margin:0 15px;'>";
-								contents += "<span class='charts__text'>" + data[i].statisticsUseNum + "회</span>";
-								contents += "</div>";
-								contents += "<div style='font-size: 12px; margin:0 15px'>";
-								contents += data[i].detailName;
-								contents += "</div>";
-								contents += "</div>";
-								
-								$("#graphDiv").append(contents);
-							} else {
-								contents += "<div class='charts charts--vertical'>";
-								contents += "<div class='charts__chart chart--p" + percent + " chart--yellow chart--hover chart--xl' style='color:white; margin:0 15px;'>";
-								contents += "<span class='charts__text'>" + data[i].statisticsUseNum + "회</span>";
-								contents += "</div>";
-								contents += "<div style='font-size: 12px; margin:0 15px'>";
-								contents += data[i].detailName;
-								contents += "</div>";
-								contents += "</div>";
-								
-								$("#graphDiv").append(contents);
-							}
+							contents += "<div class='bar'>";
+							contents += "<div class='title'><strong>" + data[i].detailName + "</strong></div>";
+							contents += "<div class='value tooltips' data-original-title='" + data[i].statisticsUseNum + "회' data-toggle='tooltip' data-placement='top' style='height:" + percent + "%'></div>";
+							contents += "<div class='tooltip fade top in' role='tooltip' style='top: -50px; left: 5px; display: block;'><div class='tooltip-arrow'></div><div class='tooltip-inner'>"+ data[i].statisticsUseNum + "회</div></div>";
+							contents += "</div>";
+							
+							$("#graphDiv").append(contents);
 						}
 					} else {
 						$("#graphDiv > *").remove();
@@ -342,61 +238,36 @@ $(function() {
 				success : function(data){
 					if (data.length >= 1) {
 						var max;
+						var contents = "";
+						
 						$("#graphDiv > *").remove();
 						
+						contents +=	"<ul class='y-axis'>";
+						contents +=	"<li><span>100%</span></li>";
+						contents +=	"<li><span>80%</span></li>";
+						contents +=	"<li><span>60%</span></li>";
+						contents +=	"<li><span>40%</span></li>";
+						contents +=	"<li><span>20%</span></li>";
+						contents +=	"<li><span>0%</span></li>";
+						contents +=	"</ul>";
+						
+						$("#graphDiv").append(contents);
+							
 						for (i = 0; i < data.length; i++) {
 							max = data[i].max;
 						}
 						for (i = 0; i < data.length -1; i++) {
 							
 							var percent = Math.floor(data[i].statisticsUseNum / max * 100);
-							var contents = "";
+							contents = "";
 							
-							if (percent > 75) {
-								contents += "<div class='charts charts--vertical'>";
-								contents += "<div class='charts__chart chart--p" + percent + " chart--grey chart--hover chart--xl' style='color:white; margin:0 15px;'>";
-								contents += "<span class='charts__text'>" + data[i].statisticsUseNum + "회</span>";
-								contents += "</div>";
-								contents += "<div style='font-size: 12px; margin:0 15px'>";
-								contents += data[i].detailName;
-								contents += "</div>";
-								contents += "</div>";
-								
-								$("#graphDiv").append(contents);
-							} else if (percent > 50 && percent <= 75) {
-								contents += "<div class='charts charts--vertical'>";
-								contents += "<div class='charts__chart chart--p" + percent + " chart--blue chart--hover chart--xl' style='color:white; margin:0 15px;'>";
-								contents += "<span class='charts__text'>" + data[i].statisticsUseNum + "회</span>";
-								contents += "</div>";
-								contents += "<div style='font-size: 12px; margin:0 15px'>";
-								contents += data[i].detailName;
-								contents += "</div>";
-								contents += "</div>";
-								
-								$("#graphDiv").append(contents);
-							} else if (percent > 25 && percent <= 50) {
-								contents += "<div class='charts charts--vertical'>";
-								contents += "<div class='charts__chart chart--p" + percent + " chart--green chart--hover chart--xl' style='color:white; margin:0 15px;'>";
-								contents += "<span class='charts__text'>" + data[i].statisticsUseNum + "회</span>";
-								contents += "</div>";
-								contents += "<div style='font-size: 12px; margin:0 15px'>";
-								contents += data[i].detailName;
-								contents += "</div>";
-								contents += "</div>";
-								
-								$("#graphDiv").append(contents);
-							} else {
-								contents += "<div class='charts charts--vertical'>";
-								contents += "<div class='charts__chart chart--p" + percent + " chart--yellow chart--hover chart--xl' style='color:white; margin:0 15px;'>";
-								contents += "<span class='charts__text'>" + data[i].statisticsUseNum + "회</span>";
-								contents += "</div>";
-								contents += "<div style='font-size: 12px; margin:0 15px'>";
-								contents += data[i].detailName;
-								contents += "</div>";
-								contents += "</div>";
-								
-								$("#graphDiv").append(contents);
-							}
+							contents += "<div class='bar'>";
+							contents += "<div class='title'><strong>" + data[i].detailName + "</strong></div>";
+							contents += "<div class='value tooltips' data-original-title='" + data[i].statisticsUseNum + "회' data-toggle='tooltip' data-placement='top' style='height:" + percent + "%'></div>";
+							contents += "<div class='tooltip fade top in' role='tooltip' style='top: -50px; left: 5px; display: block;'><div class='tooltip-arrow'></div><div class='tooltip-inner'>"+ data[i].statisticsUseNum + "회</div></div>";
+							contents += "</div>";
+							
+							$("#graphDiv").append(contents);
 						}
 					} else {
 						$("#graphDiv > *").remove();
@@ -412,8 +283,21 @@ $(function() {
 				success : function(data){
 					if (data.length >= 1) {
 						var max;
+						var contents = "";
+						
 						$("#graphDiv > *").remove();
 						
+						contents +=	"<ul class='y-axis'>";
+						contents +=	"<li><span>100%</span></li>";
+						contents +=	"<li><span>80%</span></li>";
+						contents +=	"<li><span>60%</span></li>";
+						contents +=	"<li><span>40%</span></li>";
+						contents +=	"<li><span>20%</span></li>";
+						contents +=	"<li><span>0%</span></li>";
+						contents +=	"</ul>";
+						
+						$("#graphDiv").append(contents);
+							
 						for (i = 0; i < data.length; i++) {
 							max = data[i].max;
 						}
@@ -421,53 +305,15 @@ $(function() {
 							$("#floor").append("<option value =" + data[i].floorSeq + ">" + data[i].floorName + "</option>")
 							
 							var percent = Math.floor(data[i].statisticsUseNum / max * 100);
-							var contents = "";
+							contents = "";
 							
-							if (percent > 75) {
-								contents += "<div class='charts charts--vertical'>";
-								contents += "<div class='charts__chart chart--p" + percent + " chart--grey chart--hover chart--xl' style='color:white; margin:0 15px;'>";
-								contents += "<span class='charts__text'>" + data[i].statisticsUseNum + "회</span>";
-								contents += "</div>";
-								contents += "<div style='font-size: 12px; margin:0 15px'>";
-								contents += data[i].floorName;
-								contents += "</div>";
-								contents += "</div>";
-								
-								$("#graphDiv").append(contents);
-							} else if (percent > 50 && percent <= 75) {
-								contents += "<div class='charts charts--vertical'>";
-								contents += "<div class='charts__chart chart--p" + percent + " chart--blue chart--hover chart--xl' style='color:white; margin:0 15px;'>";
-								contents += "<span class='charts__text'>" + data[i].statisticsUseNum + "회</span>";
-								contents += "</div>";
-								contents += "<div style='font-size: 12px; margin:0 15px'>";
-								contents += data[i].floorName;
-								contents += "</div>";
-								contents += "</div>";
-								
-								$("#graphDiv").append(contents);
-							} else if (percent > 25 && percent <= 50) {
-								contents += "<div class='charts charts--vertical'>";
-								contents += "<div class='charts__chart chart--p" + percent + " chart--green chart--hover chart--xl' style='color:white; margin:0 15px;'>";
-								contents += "<span class='charts__text'>" + data[i].statisticsUseNum + "회</span>";
-								contents += "</div>";
-								contents += "<div style='font-size: 12px; margin:0 15px'>";
-								contents += data[i].floorName;
-								contents += "</div>";
-								contents += "</div>";
-								
-								$("#graphDiv").append(contents);
-							} else {
-								contents += "<div class='charts charts--vertical'>";
-								contents += "<div class='charts__chart chart--p" + percent + " chart--yellow chart--hover chart--xl' style='color:white; margin:0 15px;'>";
-								contents += "<span class='charts__text'>" + data[i].statisticsUseNum + "회</span>";
-								contents += "</div>";
-								contents += "<div style='font-size: 12px; margin:0 15px'>";
-								contents += data[i].floorName;
-								contents += "</div>";
-								contents += "</div>";
-								
-								$("#graphDiv").append(contents);
-							}
+							contents += "<div class='bar'>";
+							contents += "<div class='title'><strong>" + data[i].floorName + "</strong></div>";
+							contents += "<div class='value tooltips' data-original-title='" + data[i].statisticsUseNum + "회' data-toggle='tooltip' data-placement='top' style='height:" + percent + "%'></div>";
+							contents += "<div class='tooltip fade top in' role='tooltip' style='top: -50px; left: 5px; display: block;'><div class='tooltip-arrow'></div><div class='tooltip-inner'>"+ data[i].statisticsUseNum + "회</div></div>";
+							contents += "</div>";
+							
+							$("#graphDiv").append(contents);
 						}
 					} else {
 						$("#graphDiv > *").remove();
@@ -498,61 +344,35 @@ $(function() {
 				success : function(data){
 					if (data.length >= 1) {
 						var max;
+						var contents = "";
+						
 						$("#graphDiv > *").remove();
 						
+						contents +=	"<ul class='y-axis'>";
+						contents +=	"<li><span>100%</span></li>";
+						contents +=	"<li><span>80%</span></li>";
+						contents +=	"<li><span>60%</span></li>";
+						contents +=	"<li><span>40%</span></li>";
+						contents +=	"<li><span>20%</span></li>";
+						contents +=	"<li><span>0%</span></li>";
+						
+						$("#graphDiv").append(contents);
+							
 						for (i = 0; i < data.length; i++) {
 							max = data[i].max;
 						}
 						for (i = 0; i < data.length -1; i++) {
 							
 							var percent = Math.floor(data[i].statisticsUseNum / max * 100);
-							var contents = "";
+							contents = "";
 							
-							if (percent > 75) {
-								contents += "<div class='charts charts--vertical'>";
-								contents += "<div class='charts__chart chart--p" + percent + " chart--grey chart--hover chart--xl' style='color:white; margin:0 15px;'>";
-								contents += "<span class='charts__text'>" + data[i].statisticsUseNum + "회</span>";
-								contents += "</div>";
-								contents += "<div style='font-size: 12px; margin:0 15px'>";
-								contents += data[i].floorName;
-								contents += "</div>";
-								contents += "</div>";
-								
-								$("#graphDiv").append(contents);
-							} else if (percent > 50 && percent <= 75) {
-								contents += "<div class='charts charts--vertical'>";
-								contents += "<div class='charts__chart chart--p" + percent + " chart--blue chart--hover chart--xl' style='color:white; margin:0 15px;'>";
-								contents += "<span class='charts__text'>" + data[i].statisticsUseNum + "회</span>";
-								contents += "</div>";
-								contents += "<div style='font-size: 12px; margin:0 15px'>";
-								contents += data[i].floorName;
-								contents += "</div>";
-								contents += "</div>";
-								
-								$("#graphDiv").append(contents);
-							} else if (percent > 25 && percent <= 50) {
-								contents += "<div class='charts charts--vertical'>";
-								contents += "<div class='charts__chart chart--p" + percent + " chart--green chart--hover chart--xl' style='color:white; margin:0 15px;'>";
-								contents += "<span class='charts__text'>" + data[i].statisticsUseNum + "회</span>";
-								contents += "</div>";
-								contents += "<div style='font-size: 12px; margin:0 15px'>";
-								contents += data[i].floorName;
-								contents += "</div>";
-								contents += "</div>";
-								
-								$("#graphDiv").append(contents);
-							} else {
-								contents += "<div class='charts charts--vertical'>";
-								contents += "<div class='charts__chart chart--p" + percent + " chart--yellow chart--hover chart--xl' style='color:white; margin:0 15px;'>";
-								contents += "<span class='charts__text'>" + data[i].statisticsUseNum + "회</span>";
-								contents += "</div>";
-								contents += "<div style='font-size: 12px; margin:0 15px'>";
-								contents += data[i].floorName;
-								contents += "</div>";
-								contents += "</div>";
-								
-								$("#graphDiv").append(contents);
-							}
+							contents += "<div class='bar'>";
+							contents += "<div class='title'><strong>" + data[i].floorName + "</strong></div>";
+							contents += "<div class='value tooltips' data-original-title='" + data[i].statisticsUseNum + "회' data-toggle='tooltip' data-placement='top' style='height:" + percent + "%'></div>";
+							contents += "<div class='tooltip fade top in' role='tooltip' style='top: -50px; left: 5px; display: block;'><div class='tooltip-arrow'></div><div class='tooltip-inner'>"+ data[i].statisticsUseNum + "회</div></div>";
+							contents += "</div>";
+							
+							$("#graphDiv").append(contents);
 						}
 					} else {
 						$("#graphDiv > *").remove();
@@ -568,8 +388,21 @@ $(function() {
 				success : function(data){
 					if (data.length >= 1) {
 						var max;
+						var contents = "";
+						
 						$("#graphDiv > *").remove();
 						
+						contents +=	"<ul class='y-axis'>";
+						contents +=	"<li><span>100%</span></li>";
+						contents +=	"<li><span>80%</span></li>";
+						contents +=	"<li><span>60%</span></li>";
+						contents +=	"<li><span>40%</span></li>";
+						contents +=	"<li><span>20%</span></li>";
+						contents +=	"<li><span>0%</span></li>";
+						contents +=	"</ul>";
+						
+						$("#graphDiv").append(contents);
+							
 						for (i = 0; i < data.length; i++) {
 							max = data[i].max;
 						}
@@ -577,53 +410,15 @@ $(function() {
 							$("#gender").append("<option value =" + data[i].genderNum + ">" + data[i].genderName + "</option>")
 							
 							var percent = Math.floor(data[i].statisticsUseNum / max * 100);
-							var contents = "";
+							contents = "";
 							
-							if (percent > 75) {
-								contents += "<div class='charts charts--vertical'>";
-								contents += "<div class='charts__chart chart--p" + percent + " chart--grey chart--hover chart--xl' style='color:white; margin:0 15px;'>";
-								contents += "<span class='charts__text'>" + data[i].statisticsUseNum + "회</span>";
-								contents += "</div>";
-								contents += "<div style='font-size: 12px; margin:0 15px'>";
-								contents += data[i].genderName;
-								contents += "</div>";
-								contents += "</div>";
-								
-								$("#graphDiv").append(contents);
-							} else if (percent > 50 && percent <= 75) {
-								contents += "<div class='charts charts--vertical'>";
-								contents += "<div class='charts__chart chart--p" + percent + " chart--blue chart--hover chart--xl' style='color:white; margin:0 15px;'>";
-								contents += "<span class='charts__text'>" + data[i].statisticsUseNum + "회</span>";
-								contents += "</div>";
-								contents += "<div style='font-size: 12px; margin:0 15px'>";
-								contents += data[i].genderName;
-								contents += "</div>";
-								contents += "</div>";
-								
-								$("#graphDiv").append(contents);
-							} else if (percent > 25 && percent <= 50) {
-								contents += "<div class='charts charts--vertical'>";
-								contents += "<div class='charts__chart chart--p" + percent + " chart--green chart--hover chart--xl' style='color:white; margin:0 15px;'>";
-								contents += "<span class='charts__text'>" + data[i].statisticsUseNum + "회</span>";
-								contents += "</div>";
-								contents += "<div style='font-size: 12px; margin:0 15px'>";
-								contents += data[i].genderName;
-								contents += "</div>";
-								contents += "</div>";
-								
-								$("#graphDiv").append(contents);
-							} else {
-								contents += "<div class='charts charts--vertical'>";
-								contents += "<div class='charts__chart chart--p" + percent + " chart--yellow chart--hover chart--xl' style='color:white; margin:0 15px;'>";
-								contents += "<span class='charts__text'>" + data[i].statisticsUseNum + "회</span>";
-								contents += "</div>";
-								contents += "<div style='font-size: 12px; margin:0 15px'>";
-								contents += data[i].genderName;
-								contents += "</div>";
-								contents += "</div>";
-								
-								$("#graphDiv").append(contents);
-							}
+							contents += "<div class='bar'>";
+							contents += "<div class='title'><strong>" + data[i].genderName + "</strong></div>";
+							contents += "<div class='value tooltips' data-original-title='" + data[i].statisticsUseNum + "회' data-toggle='tooltip' data-placement='top' style='height:" + percent + "%'></div>";
+							contents += "<div class='tooltip fade top in' role='tooltip' style='top: -50px; left: 5px; display: block;'><div class='tooltip-arrow'></div><div class='tooltip-inner'>"+ data[i].statisticsUseNum + "회</div></div>";
+							contents += "</div>";
+							
+							$("#graphDiv").append(contents);
 						}
 					} else {
 						$("#graphDiv > *").remove();
@@ -652,61 +447,36 @@ $(function() {
 				success : function(data){
 					if (data.length >= 1) {
 						var max;
+						var contents = "";
+						
 						$("#graphDiv > *").remove();
 						
+						contents +=	"<ul class='y-axis'>";
+						contents +=	"<li><span>100%</span></li>";
+						contents +=	"<li><span>80%</span></li>";
+						contents +=	"<li><span>60%</span></li>";
+						contents +=	"<li><span>40%</span></li>";
+						contents +=	"<li><span>20%</span></li>";
+						contents +=	"<li><span>0%</span></li>";
+						contents +=	"</ul>";
+						
+						$("#graphDiv").append(contents);
+							
 						for (i = 0; i < data.length; i++) {
 							max = data[i].max;
 						}
 						for (i = 0; i < data.length -1; i++) {
 							
 							var percent = Math.floor(data[i].statisticsUseNum / max * 100);
-							var contents = "";
+							contents = "";
 							
-							if (percent > 75) {
-								contents += "<div class='charts charts--vertical'>";
-								contents += "<div class='charts__chart chart--p" + percent + " chart--grey chart--hover chart--xl' style='color:white; margin:0 15px;'>";
-								contents += "<span class='charts__text'>" + data[i].statisticsUseNum + "회</span>";
-								contents += "</div>";
-								contents += "<div style='font-size: 12px; margin:0 15px'>";
-								contents += data[i].genderName;
-								contents += "</div>";
-								contents += "</div>";
-								
-								$("#graphDiv").append(contents);
-							} else if (percent > 50 && percent <= 75) {
-								contents += "<div class='charts charts--vertical'>";
-								contents += "<div class='charts__chart chart--p" + percent + " chart--blue chart--hover chart--xl' style='color:white; margin:0 15px;'>";
-								contents += "<span class='charts__text'>" + data[i].statisticsUseNum + "회</span>";
-								contents += "</div>";
-								contents += "<div style='font-size: 12px; margin:0 15px'>";
-								contents += data[i].genderName;
-								contents += "</div>";
-								contents += "</div>";
-								
-								$("#graphDiv").append(contents);
-							} else if (percent > 25 && percent <= 50) {
-								contents += "<div class='charts charts--vertical'>";
-								contents += "<div class='charts__chart chart--p" + percent + " chart--green chart--hover chart--xl' style='color:white; margin:0 15px;'>";
-								contents += "<span class='charts__text'>" + data[i].statisticsUseNum + "회</span>";
-								contents += "</div>";
-								contents += "<div style='font-size: 12px; margin:0 15px'>";
-								contents += data[i].genderName;
-								contents += "</div>";
-								contents += "</div>";
-								
-								$("#graphDiv").append(contents);
-							} else {
-								contents += "<div class='charts charts--vertical'>";
-								contents += "<div class='charts__chart chart--p" + percent + " chart--yellow chart--hover chart--xl' style='color:white; margin:0 15px;'>";
-								contents += "<span class='charts__text'>" + data[i].statisticsUseNum + "회</span>";
-								contents += "</div>";
-								contents += "<div style='font-size: 12px; margin:0 15px'>";
-								contents += data[i].genderName;
-								contents += "</div>";
-								contents += "</div>";
-								
-								$("#graphDiv").append(contents);
-							}
+							contents += "<div class='bar'>";
+							contents += "<div class='title'><strong>" + data[i].genderName + "</strong></div>";
+							contents += "<div class='value tooltips' data-original-title='" + data[i].statisticsUseNum + "회' data-toggle='tooltip' data-placement='top' style='height:" + percent + "%'></div>";
+							contents += "<div class='tooltip fade top in' role='tooltip' style='top: -50px; left: 5px; display: block;'><div class='tooltip-arrow'></div><div class='tooltip-inner'>"+ data[i].statisticsUseNum + "회</div></div>";
+							contents += "</div>";
+							
+							$("#graphDiv").append(contents);
 						}
 					} else {
 						$("#graphDiv > *").remove();
@@ -722,61 +492,36 @@ $(function() {
 				success : function(data){
 					if (data.length >= 1) {
 						var max;
+						var contents = "";
+						
 						$("#graphDiv > *").remove();
 						
+						contents +=	"<ul class='y-axis'>";
+						contents +=	"<li><span>100%</span></li>";
+						contents +=	"<li><span>80%</span></li>";
+						contents +=	"<li><span>60%</span></li>";
+						contents +=	"<li><span>40%</span></li>";
+						contents +=	"<li><span>20%</span></li>";
+						contents +=	"<li><span>0%</span></li>";
+						contents +=	"</ul>";
+						
+						$("#graphDiv").append(contents);
+							
 						for (i = 0; i < data.length; i++) {
 							max = data[i].max;
 						}
 						for (i = 0; i < data.length -1; i++) {
 							
 							var percent = Math.floor(data[i].statisticsUseNum / max * 100);
-							var contents = "";
+							contents = "";
 							
-							if (percent > 75) {
-								contents += "<div class='charts charts--vertical'>";
-								contents += "<div class='charts__chart chart--p" + percent + " chart--grey chart--hover chart--xl' style='color:white; margin:0 15px;'>";
-								contents += "<span class='charts__text'>" + data[i].statisticsUseNum + "회</span>";
-								contents += "</div>";
-								contents += "<div style='font-size: 12px; margin:0 15px'>";
-								contents += "IP : " + data[i].raspberrypiIp;
-								contents += "</div>";
-								contents += "</div>";
-								
-								$("#graphDiv").append(contents);
-							} else if (percent > 50 && percent <= 75) {
-								contents += "<div class='charts charts--vertical'>";
-								contents += "<div class='charts__chart chart--p" + percent + " chart--blue chart--hover chart--xl' style='color:white; margin:0 15px;'>";
-								contents += "<span class='charts__text'>" + data[i].statisticsUseNum + "회</span>";
-								contents += "</div>";
-								contents += "<div style='font-size: 12px; margin:0 15px'>";
-								contents += "IP : " + data[i].raspberrypiIp;
-								contents += "</div>";
-								contents += "</div>";
-								
-								$("#graphDiv").append(contents);
-							} else if (percent > 25 && percent <= 50) {
-								contents += "<div class='charts charts--vertical'>";
-								contents += "<div class='charts__chart chart--p" + percent + " chart--green chart--hover chart--xl' style='color:white; margin:0 15px;'>";
-								contents += "<span class='charts__text'>" + data[i].statisticsUseNum + "회</span>";
-								contents += "</div>";
-								contents += "<div style='font-size: 12px; margin:0 15px'>";
-								contents += "IP : " + data[i].raspberrypiIp;
-								contents += "</div>";
-								contents += "</div>";
-								
-								$("#graphDiv").append(contents);
-							} else {
-								contents += "<div class='charts charts--vertical'>";
-								contents += "<div class='charts__chart chart--p" + percent + " chart--yellow chart--hover chart--xl' style='color:white; margin:0 15px;'>";
-								contents += "<span class='charts__text'>" + data[i].statisticsUseNum + "회</span>";
-								contents += "</div>";
-								contents += "<div style='font-size: 12px; margin:0 15px'>";
-								contents += "IP : " + data[i].raspberrypiIp;
-								contents += "</div>";
-								contents += "</div>";
-								
-								$("#graphDiv").append(contents);
-							}
+							contents += "<div class='bar'>";
+							contents += "<div class='title'><strong>" + data[i].raspberrypiIp + "</strong></div>";
+							contents += "<div class='value tooltips' data-original-title='" + data[i].statisticsUseNum + "회' data-toggle='tooltip' data-placement='top' style='height:" + percent + "%'></div>";
+							contents += "<div class='tooltip fade top in' role='tooltip' style='top: -50px; left: 5px; display: block;'><div class='tooltip-arrow'></div><div class='tooltip-inner'>"+ data[i].statisticsUseNum + "회</div></div>";
+							contents += "</div>";
+							
+							$("#graphDiv").append(contents);
 						}
 					} else {
 						$("#graphDiv > *").remove();

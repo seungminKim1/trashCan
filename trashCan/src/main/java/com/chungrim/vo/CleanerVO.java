@@ -6,6 +6,7 @@ public class CleanerVO {
 	private String cleanerName;
 	private String cleanerStatus;
 	private String cleanerPhone;
+	private String cleanerToken;
 	
 	public String getCleanerId() {
 		return cleanerId;
@@ -37,11 +38,17 @@ public class CleanerVO {
 	public void setCleanerPhone(String cleanerPhone) {
 		this.cleanerPhone = cleanerPhone;
 	}
-	
+	public String getCleanerToken() {
+		return cleanerToken;
+	}
+	public void setCleanerToken(String cleanerToken) {
+		this.cleanerToken = cleanerToken;
+	}
 	@Override
 	public String toString() {
 		return "CleanerVO [cleanerId=" + cleanerId + ", cleanerPassword=" + cleanerPassword + ", cleanerName="
-				+ cleanerName + ", cleanerStatus=" + cleanerStatus + ", cleanerPhone=" + cleanerPhone + "]";
+				+ cleanerName + ", cleanerStatus=" + cleanerStatus + ", cleanerPhone=" + cleanerPhone
+				+ ", cleanerToken=" + cleanerToken + "]";
 	}
 	
 	

@@ -6,7 +6,14 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+import javax.inject.Inject;
+
+import com.chungrim.service.CleanerService;
+import com.chungrim.vo.CleanerVO;
+
 public class TestController {
+	@Inject
+	private CleanerService cleanerService;
 	
 	public void printLog() throws Exception {
 		
@@ -19,15 +26,26 @@ public class TestController {
         conn.setRequestProperty("Authorization", "key=" + apiKey);
         conn.setDoOutput(true);
         
-        String input = "{\"notification\" : {\"title\" : \" 쓰레기통 \", \"body\" : \"비워 호진이형\"}, \"to\":\"cr1mRlZqw4M:APA91bGznaw747wUuZkfU_31yP57WW0324V2U9Dg33NNq7LyvYiS4xDB4qmumwmh2kLYQuicpEzfnGJ8E6lRfk53qdrT9v0E7WZJzz70_Luqj2gDqtuw6mCPBW89z-sFTdsGEREsHS5k\"}";
-        OutputStream os = conn.getOutputStream();
+        CleanerVO cleaner = cleanerService.selectToken();
+        String token = "";
         
-        // 서버에서 날려서 한글 깨지는 사람은 아래처럼  UTF-8로 인코딩해서 날려주자
+        if(cleaner != null) {
+        	token = cleaner.getCleanerToken();
+        }
+        
+        String input = "{\"notification\" : {\"title\" : \" trashcan \", \"body\" : \"쓰레기통 비워 주세요.\"}, \"to\":\""+ token +"\", \"click_action\" : \"OPEN_ACTIVITY\"}";
+        OutputStream os = conn.getOutputStream();
+        System.out.println("dddd");
+        System.out.println("성공");
+        //�샇吏꾩씠 �룿 : f39FwzAWNt8:APA91bGiESTXT6RtvFCXHIeqzQnWJH9AZJLMnQ2Lu5dBdpIZ72DGsgP7ITsJ9JPxUUk-67TgEMFFDhWnNiyC6SMhHZlVom6vZxcekmarqV15PK2f9CbJnqbeU6RBvPqcgpDyESUIg5oK
+        //�뿉裕� : dqqWwYT3ZHM:APA91bFo8NfhvShlvknUxO9Sp52aGHXBIUU5ed3dwzT5ruO0KOHyzY9IFnzmxOYtKqSzbmmQAEoEAQ0R0-ZW6KZ2GzzqwpGQnJVXSFyg3bazX5jZIj4psAtyCOJjYqcU8uRAPSfXBQ6z
+        // �꽌踰꾩뿉�꽌 �궇�젮�꽌 �븳湲� 源⑥��뒗 �궗�엺�� �븘�옒泥섎읆  UTF-8濡� �씤肄붾뵫�빐�꽌 �궇�젮二쇱옄
         os.write(input.getBytes("UTF-8"));
         os.flush();
         os.close();
 
         int responseCode = conn.getResponseCode();
+         
         System.out.println("\nSending 'POST' request to URL : " + url);
         System.out.println("Post parameters : " + input);
         System.out.println("Response Code : " + responseCode);
@@ -41,6 +59,7 @@ public class TestController {
         }
         in.close();
         // print result
+        
         System.out.println(response.toString());
         
 	}

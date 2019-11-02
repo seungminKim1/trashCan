@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.chungrim.service.MappingService;
 import com.chungrim.service.StatisticsService;
 import com.chungrim.vo.StatisticsVO;
 
@@ -19,6 +20,9 @@ public class StatisticsDayController {
 	
 	@Inject
 	private StatisticsService statisticsService;
+	
+	@Inject
+	private MappingService mappingService;
 	
 	// 일간 통계  View 및 selectBox Month + 최대값 
 	@RequestMapping(value = "/statistics/statisticsDay.do")
@@ -35,6 +39,13 @@ public class StatisticsDayController {
 		mav.addObject("dayView", dayView);
 		mav.addObject("dayMax", dayMax);
 		mav.addObject("month", selectMonth);
+		
+		int piCount = mappingService.piCount();
+		int cleanCount = mappingService.cleanCount();
+		int mapCount = mappingService.mapCount();
+		mav.addObject("piCount", piCount);
+		mav.addObject("cleanCount", cleanCount);
+		mav.addObject("mapCount", mapCount);
 		
 		return mav;
 	}
@@ -55,13 +66,13 @@ public class StatisticsDayController {
 	@RequestMapping(value = "/statistics/daySelectDay.do")
 	public @ResponseBody List<StatisticsVO> daySelectDay(@RequestParam(value = "month") String month) throws Exception {
 		
-		if (month.equals("1")||month.equals("2")||month.equals("3")||month.equals("4")||month.equals("5")||month.equals("6")||
-				month.equals("7")||month.equals("8")||month.equals("9")) {
-			month = "%-0" + month +"-%";
-		} else {
-			month = "%-" + month + "-%";
-		}
-		
+//		if (month.equals("1")||month.equals("2")||month.equals("3")||month.equals("4")||month.equals("5")||month.equals("6")||
+//				month.equals("7")||month.equals("8")||month.equals("9")) {
+//			month = "%-0" + month +"-%";
+//		} else {
+//			month = "%-" + month + "-%";
+//		}
+		System.out.println("=================="+month+"%%%%%%%%%%%%%%%");
 		List<StatisticsVO> day = statisticsService.daySelectDay(month);
 		
 		return day;

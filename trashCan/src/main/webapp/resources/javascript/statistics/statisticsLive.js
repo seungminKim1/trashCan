@@ -1,4 +1,4 @@
-	/**
+/**
  * statisticsLive.js
  */
 
@@ -14,24 +14,34 @@ $(function() {
 		$("#gender").find('option').remove();
 		$("#gender").append("<option value=" + "dump" + ">" + "--선택--" + "</option>");
 		
-		if ($("#place option:selected").text() == "--선택--") {
-			$("#graphDiv > *").remove();
-		} else {
-			$("#graphDiv > *").remove();
-			$.ajax({
-				url : 'liveSelectDetail.do',
-				data : {placeSeq:placeSeq},
-			    type : 'post',
-			    dataType: 'json',
-				success : function(data){
-					if (data.length >= 1) {					
-						for (i = 0; i < data.length; i++) {
-							$("#detail").append("<option value =" + data[i].detailSeq + ">" + data[i].detailName + "</option>")
-						}
+		$("#graphDiv > *").remove();
+		
+		var contents = "";
+		
+		contents +=	"<ul class='y-axis'>";
+		contents +=	"<li><span>100%</span></li>";
+		contents +=	"<li><span>80%</span></li>";
+		contents +=	"<li><span>60%</span></li>";
+		contents +=	"<li><span>40%</span></li>";
+		contents +=	"<li><span>20%</span></li>";
+		contents +=	"<li><span>0%</span></li>";
+		contents +=	"</ul>";
+		
+		$("#graphDiv").append(contents);
+		
+		$.ajax({
+			url : 'liveSelectDetail.do',
+			data : {placeSeq:placeSeq},
+		    type : 'post',
+		    dataType: 'json',
+			success : function(data){
+				if (data.length >= 1) {					
+					for (i = 0; i < data.length; i++) {
+						$("#detail").append("<option value =" + data[i].detailSeq + ">" + data[i].detailName + "</option>")
 					}
-			    }
-			});	
-		}
+				}
+		    }
+		});	
 	});
 });
 
@@ -46,24 +56,34 @@ $(function() {
 		$("#gender").find('option').remove();
 		$("#gender").append("<option value=" + "dump" + ">" + "--선택--" + "</option>");
 		
-		if ($("#detail option:selected").text() == "--선택--") {
-			$("#graphDiv > *").remove();
-		} else {
-			$("#graphDiv > *").remove();
-			$.ajax({
-				url : 'liveSelectFloor.do',
-				data : {placeSeq:placeSeq, detailSeq:detailSeq},
-			    type : 'post',
-			    dataType: 'json',
-				success : function(data){
-					if (data.length >= 1) {					
-						for (i = 0; i < data.length; i++) {
-							$("#floor").append("<option value =" + data[i].floorSeq + ">" + data[i].floorName + "</option>")
-						}
+		$("#graphDiv > *").remove();
+		
+		var contents = "";
+		
+		contents +=	"<ul class='y-axis'>";
+		contents +=	"<li><span>100%</span></li>";
+		contents +=	"<li><span>80%</span></li>";
+		contents +=	"<li><span>60%</span></li>";
+		contents +=	"<li><span>40%</span></li>";
+		contents +=	"<li><span>20%</span></li>";
+		contents +=	"<li><span>0%</span></li>";
+		contents +=	"</ul>";
+		
+		$("#graphDiv").append(contents);
+			
+		$.ajax({
+			url : 'liveSelectFloor.do',
+			data : {placeSeq:placeSeq, detailSeq:detailSeq},
+		    type : 'post',
+		    dataType: 'json',
+			success : function(data){
+				if (data.length >= 1) {					
+					for (i = 0; i < data.length; i++) {
+						$("#floor").append("<option value =" + data[i].floorSeq + ">" + data[i].floorName + "</option>")
 					}
-			    }
-			});	
-		}
+				}
+		    }
+		});	
 	});
 });
 
@@ -77,24 +97,34 @@ $(function() {
 		$("#gender").find('option').remove();
 		$("#gender").append("<option value=" + "dump" + ">" + "--선택--" + "</option>");
 		
-		if ($("#floor option:selected").text() == "--선택--") {
-			$("#graphDiv > *").remove();
-		} else {
-			$("#graphDiv > *").remove();
-			$.ajax({
-				url : 'liveSelectGender.do',
-				data : {placeSeq:placeSeq, detailSeq:detailSeq, floorSeq:floorSeq},
-			    type : 'post',
-			    dataType: 'json',
-				success : function(data){
-					if (data.length >= 1) {					
-						for (i = 0; i < data.length; i++) {
-							$("#gender").append("<option value =" + data[i].genderNum + ">" + data[i].genderName + "</option>")
-						}
+		$("#graphDiv > *").remove();
+		
+		var contents = "";
+		
+		contents +=	"<ul class='y-axis'>";
+		contents +=	"<li><span>100%</span></li>";
+		contents +=	"<li><span>80%</span></li>";
+		contents +=	"<li><span>60%</span></li>";
+		contents +=	"<li><span>40%</span></li>";
+		contents +=	"<li><span>20%</span></li>";
+		contents +=	"<li><span>0%</span></li>";
+		contents +=	"</ul>";
+		
+		$("#graphDiv").append(contents);
+		
+		$.ajax({
+			url : 'liveSelectGender.do',
+			data : {placeSeq:placeSeq, detailSeq:detailSeq, floorSeq:floorSeq},
+		    type : 'post',
+		    dataType: 'json',
+			success : function(data){
+				if (data.length >= 1) {					
+					for (i = 0; i < data.length; i++) {
+						$("#gender").append("<option value =" + data[i].genderNum + ">" + data[i].genderName + "</option>")
 					}
-			    }
-			});	
-		}
+				}
+		    }
+		});	
 	});
 });
 
@@ -106,82 +136,91 @@ $(function() {
 		var floorSeq = $("#floor option:selected").val()
 		var genderNum = $("#gender option:selected").val()
 		
-		if ($("#gender option:selected").text() == "--선택--") {
-			$("#graphDiv > *").remove();
-		} else {
-			$("#graphDiv > *").remove();
-			$.ajax({
-				url : 'liveSelectAll.do',
-				data : {placeSeq:placeSeq, detailSeq:detailSeq, floorSeq:floorSeq, genderNum:genderNum},
-			    type : 'post',
-			    dataType: 'json',
-				success : function(data){
-					if (data.length >= 1) {					
-						for (i = 0; i < data.length; i++) {
+		$("#graphDiv > *").remove();
+		
+		var contents = "";
+		
+		contents +=	"<ul class='y-axis'>";
+		contents +=	"<li><span>100%</span></li>";
+		contents +=	"<li><span>80%</span></li>";
+		contents +=	"<li><span>60%</span></li>";
+		contents +=	"<li><span>40%</span></li>";
+		contents +=	"<li><span>20%</span></li>";
+		contents +=	"<li><span>0%</span></li>";
+		contents +=	"</ul>";
+		
+		$("#graphDiv").append(contents);
+		
+		$.ajax({
+			url : 'liveSelectAll.do',
+			data : {placeSeq:placeSeq, detailSeq:detailSeq, floorSeq:floorSeq, genderNum:genderNum},
+		    type : 'post',
+		    dataType: 'json',
+			success : function(data){
+				if (data.length >= 1) {					
+					for (i = 0; i < data.length; i++) {
+						
+						var contents = "";
+						var trashAmount = Math.floor(data[i].trashAmount);
+						
+						if (trashAmount < 33) {
+							contents = "";
 							
-							var contents = "";
-							var trashAmount = Math.floor(data[i].trashAmount);
+							contents += "<div class='bar'>";
+							contents += "<div class='title'><strong>" + data[i].raspberrypiIp + "</strong></div>";
+							contents += "<div class='value tooltips' data-toggle='tooltip' data-placement='top' style='height:100%'></div>";
+							contents += "</div>";
 							
-							if (trashAmount > 90) {
-								contents += "<div class='charts charts--vertical'>";
-								contents += "<div class='charts__chart chart--p100 chart--red chart--hover chart--xl' style='color:white; margin:0 15px;'>";
-								contents += "<span class='charts__text'>100%</span>"
-								contents += "</div>";
-								contents += "<div style='font-size: 12px; margin:0 15px'>";
-								contents += "IP : " + data[i].raspberrypiIp;
-								contents += "</div>";
-								contents += "</div>";
-								
-								$("#graphDiv").append(contents);
-							} else if (trashAmount > 90 && trashAmount <= 75) {
-								contents += "<div class='charts charts--vertical'>";
-								contents += "<div class='charts__chart chart--p75 chart--yellow chart--hover chart--xl' style='color:white; margin:0 15px;'>";
-								contents += "<span class='charts__text'>90% ↓</span>"
-								contents += "</div>";
-								contents += "<div style='font-size: 12px; margin:0 15px'>";
-								contents += "IP : " + data[i].raspberrypiIp;
-								contents += "</div>";
-								contents += "</div>";
-								
-								$("#graphDiv").append(contents);
-							} else if (trashAmount > 75 && trashAmount <= 50) {
-								contents += "<div class='charts charts--vertical'>";
-								contents += "<div class='charts__chart chart--p50 chart--green chart--hover chart--xl' style='color:white; margin:0 15px;'>";
-								contents += "<span class='charts__text'>75% ↓</span>"
-								contents += "</div>";
-								contents += "<div style='font-size: 12px; margin:0 15px'>";
-								contents += "IP : " + data[i].raspberrypiIp;
-								contents += "</div>";
-								contents += "</div>";
-								
-								$("#graphDiv").append(contents);
-							} else if (trashAmount > 20 && trashAmount <= 50) {
-								contents += "<div class='charts charts--vertical'>";
-								contents += "<div class='charts__chart chart--p30 chart--blue chart--hover chart--xl' style='color:white; margin:0 15px;'>";
-								contents += "<span class='charts__text'>50% ↓</span>"
-								contents += "</div>";
-								contents += "<div style='font-size: 12px; margin:0 15px'>";
-								contents += "IP : " + data[i].raspberrypiIp;
-								contents += "</div>";
-								contents += "</div>";
-								
-								$("#graphDiv").append(contents);
-							}  else {	
-								contents += "<div class='charts charts--vertical'>";
-								contents += "<div class='charts__chart chart--p10 chart--hover chart--xl' style='color:white;'>";
-								contents += "<span class='charts__text'>10% ↓</span>"
-								contents += "</div>";
-								contents += "<div style='font-size: 12px; margin:0 15px'>";
-								contents += "IP : " + data[i].raspberrypiIp;
-								contents += "</div>";
-								contents += "</div>";
-								
-								$("#graphDiv").append(contents);
-							}
+							$("#graphDiv").append(contents);
+						} else if (trashAmount < 66 && trashAmount >= 33) {
+							contents = "";
+							
+							contents += "<div class='bar'>";
+							contents += "<div class='title'><strong>" + data[i].raspberrypiIp + "</strong></div>";
+							contents += "<div class='value tooltips' data-toggle='tooltip' data-placement='top' style='height:80%'></div>";
+							contents += "</div>";
+							
+							$("#graphDiv").append(contents);
+						} else if (trashAmount < 99 && trashAmount >= 66) {
+							contents = "";
+							
+							contents += "<div class='bar'>";
+							contents += "<div class='title'><strong>" + data[i].raspberrypiIp + "</strong></div>";
+							contents += "<div class='value tooltips' data-toggle='tooltip' data-placement='top' style='height:60%'></div>";
+							contents += "</div>";
+							
+							$("#graphDiv").append(contents);
+						} else if (trashAmount < 132 && trashAmount >= 99) {
+							contents = "";
+							
+							contents += "<div class='bar'>";
+							contents += "<div class='title'><strong>" + data[i].raspberrypiIp + "</strong></div>";
+							contents += "<div class='value tooltips' data-toggle='tooltip' data-placement='top' style='height:40%'></div>";
+							contents += "</div>";
+							
+							$("#graphDiv").append(contents);
+						} else if (trashAmount < 170 && trashAmount >= 132) {
+							contents = "";
+							
+							contents += "<div class='bar'>";
+							contents += "<div class='title'><strong>" + data[i].raspberrypiIp + "</strong></div>";
+							contents += "<div class='value tooltips' data-toggle='tooltip' data-placement='top' style='height:20%'></div>";
+							contents += "</div>";
+							
+							$("#graphDiv").append(contents);
+						} else {	
+							contents = "";
+							
+							contents += "<div class='bar'>";
+							contents += "<div class='title'><strong>" + data[i].raspberrypiIp + "</strong></div>";
+							contents += "<div class='value tooltips' data-toggle='tooltip' data-placement='top' style='height:00%'></div>";
+							contents += "</div>";
+							
+							$("#graphDiv").append(contents);
 						}
 					}
-			    }
-			});	
-		}
+				}
+		    }
+		});	
 	});
 });

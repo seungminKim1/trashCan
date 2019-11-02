@@ -6,6 +6,13 @@ public class MappingVO {
 	private String raspberrypiIp;
 	private String cleanerId;
 	private Date mappingDate;
+	private String cleanerName;
+	public String getCleanerName() {
+		return cleanerName;
+	}
+	public void setCleanerName(String cleanerName) {
+		this.cleanerName = cleanerName;
+	}
 	public String getRaspberrypiIp() {
 		return raspberrypiIp;
 	}

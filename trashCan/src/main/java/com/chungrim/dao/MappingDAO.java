@@ -1,8 +1,6 @@
 package com.chungrim.dao;
 
 import java.util.List;
-import java.util.Map;
-
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -16,9 +14,9 @@ public class MappingDAO {
 	private SqlSession sqlSession;
 
 	private static final String Namespace = "com.chungrim.mapper.MappingMapper";
-	public List<RaspberrypiVO> selectPI() {
+	public List<RaspberrypiVO> selectPI(int i) {
 		// TODO Auto-generated method stub
-		return sqlSession.selectList(Namespace+".selectPI");
+		return sqlSession.selectList(Namespace+".selectPI",i);
 	}
 
 	public  List<CleanerVO> selectClean() {
@@ -49,6 +47,22 @@ public class MappingDAO {
 	public int updateMap(String str) {
 		// TODO Auto-generated method stub
 		return sqlSession.update(Namespace+".updateMap",str);
+	}
+
+	public int cleanCount() {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(Namespace+".cleanCount");
+	}
+
+	public int piCount() {
+		// TODO Auto-generated method stub
+		
+		return sqlSession.selectOne(Namespace+".piCount");
+	}
+
+	public int mapCount() {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(Namespace+".mapCount");
 	}
 
 	

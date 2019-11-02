@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.chungrim.service.AdminService;
+import com.chungrim.service.MappingService;
 import com.chungrim.vo.AdminVO;
 
 /**
@@ -21,7 +22,9 @@ public class AdminController {
 
 	@Inject
 	private AdminService adminService;
-
+	@Inject
+	MappingService mappingService;
+	
 	// 로그인 폼
 	@RequestMapping(value = "/")
 	public String index() throws Exception {
@@ -43,6 +46,17 @@ public class AdminController {
 		} else {
 			mav.setViewName("administrator/loginFail");
 		}
+		return mav;
+	}
+	
+	// 로그아웃 처리
+	@RequestMapping(value = "/adminLogOut.do")
+	public ModelAndView adminLogOut(HttpServletRequest request) throws Exception {
+		ModelAndView mav = new ModelAndView();
+		request.getSession().invalidate();
+		
+		mav.setViewName("administrator/adminLoginForm");
+		
 		return mav;
 	}
 }

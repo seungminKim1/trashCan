@@ -12,7 +12,7 @@ $(function() {
 		$("#gender").find('option').remove();
 		$("#gender").append("<option value=" + "dump" + ">" + "--선택--" + "</option>");
 		$("#raspberrypiManagementTable *").remove();
-		
+		$(".content-panel").css("display","none");
 		var fkPlaceSeq = $("#place option:selected").val();
 		
 		if ($("#place option:selected").text() == "--선택--") {
@@ -25,8 +25,11 @@ $(function() {
 			    dataType: 'json',
 				success : function(data){
 					if (data.length > 0) {
+						$(".content-panel").css("display","");
+						
 						var menu = "";
 						
+						menu += "<thead>";
 						menu += "<tr>";
 						menu += "<td><strong>라즈베리파이IP</strong></td>";
 						menu += "<td><strong>장소</strong></td>";
@@ -36,6 +39,9 @@ $(function() {
 						menu += "<td><strong>상태 값</strong></td>";
 						menu += "<td><strong>0 = 사용x<br>1 = 사용o</strong></td>";
 						menu += "</tr>";
+						menu += "</thead>";
+						menu += "<tbody>";
+						
 						$("#raspberrypiManagementTable").append(menu);
 						
 						for (i = 0; i < data.length; i++) {
@@ -52,6 +58,9 @@ $(function() {
 							contents += "</tr>";
 							$("#raspberrypiManagementTable").append(contents);
 						}
+						contents = "";
+						contents += "</tbody>";
+						$("#raspberrypiManagementTable").append(contents);
 					}
 				}
 			});
@@ -93,8 +102,12 @@ $(function() {
 			    dataType: 'json',
 				success : function(data){
 					if (data.length > 0) {
+						
+						$(".content-panel").css("display","");
+						
 						var menu = "";
 						
+						menu += "<thead>";
 						menu += "<tr>";
 						menu += "<td><strong>라즈베리파이IP</strong></td>";
 						menu += "<td><strong>장소</strong></td>";
@@ -104,6 +117,9 @@ $(function() {
 						menu += "<td><strong>상태 값</strong></td>";
 						menu += "<td><strong>0 = 사용x<br>1 = 사용o</strong></td>";
 						menu += "</tr>";
+						menu += "</thead>";
+						menu += "<tbody>";
+						
 						$("#raspberrypiManagementTable").append(menu);
 						
 						for (i = 0; i < data.length; i++) {
@@ -120,6 +136,9 @@ $(function() {
 							contents += "</tr>";
 							$("#raspberrypiManagementTable").append(contents);
 						}
+						contents = "";
+						contents += "</tbody>";
+						$("#raspberrypiManagementTable").append(contents);
 					} 
 				}
 			});
@@ -131,8 +150,12 @@ $(function() {
 			    dataType: 'json',
 				success : function(data){
 					if (data.length > 0) {
+						
+						$(".content-panel").css("display","");
+						
 						var menu = "";
 						
+						menu += "<thead>";
 						menu += "<tr>";
 						menu += "<td><strong>라즈베리파이IP</strong></td>";
 						menu += "<td><strong>장소</strong></td>";
@@ -142,6 +165,9 @@ $(function() {
 						menu += "<td><strong>상태 값</strong></td>";
 						menu += "<td><strong>0 = 사용x<br>1 = 사용o</strong></td>";
 						menu += "</tr>";
+						menu += "</thead>";
+						menu += "<tbody>";
+						
 						$("#raspberrypiManagementTable").append(menu);
 						
 						for (i = 0; i < data.length; i++) {
@@ -158,6 +184,9 @@ $(function() {
 							contents += "</tr>";
 							$("#raspberrypiManagementTable").append(contents);
 						}
+						contents = "";
+						contents += "</tbody>";
+						$("#raspberrypiManagementTable").append(contents);
 					}
 				}
 			});
@@ -198,8 +227,12 @@ $(function() {
 			    dataType: 'json',
 				success : function(data){
 					if (data.length > 0) {
+						
+						$(".content-panel").css("display","");
+						
 						var menu = "";
 						
+						menu += "<thead>";
 						menu += "<tr>";
 						menu += "<td><strong>라즈베리파이IP</strong></td>";
 						menu += "<td><strong>장소</strong></td>";
@@ -209,6 +242,9 @@ $(function() {
 						menu += "<td><strong>상태 값</strong></td>";
 						menu += "<td><strong>0 = 사용x<br>1 = 사용o</strong></td>";
 						menu += "</tr>";
+						menu += "</thead>";
+						menu += "<tbody>";
+						
 						$("#raspberrypiManagementTable").append(menu);
 						
 						for (i = 0; i < data.length; i++) {
@@ -225,6 +261,9 @@ $(function() {
 							contents += "</tr>";
 							$("#raspberrypiManagementTable").append(contents);
 						}
+						contents = "";
+						contents += "</tbody>";
+						$("#raspberrypiManagementTable").append(contents);
 					}
 			   	}
 			});
@@ -236,8 +275,12 @@ $(function() {
 			    dataType: 'json',
 				success : function(data){
 					if (data.length > 0) {
+						
+						$(".content-panel").css("display","");
+						
 						var menu = "";
 						
+						menu += "<thead>";
 						menu += "<tr>";
 						menu += "<td><strong>라즈베리파이IP</strong></td>";
 						menu += "<td><strong>장소</strong></td>";
@@ -247,6 +290,9 @@ $(function() {
 						menu += "<td><strong>상태 값</strong></td>";
 						menu += "<td><strong>0 = 사용x<br>1 = 사용o</strong></td>";
 						menu += "</tr>";
+						menu += "</thead>";
+						menu += "<tbody>";
+						
 						$("#raspberrypiManagementTable").append(menu);
 						
 						for (i = 0; i < data.length; i++) {
@@ -263,6 +309,9 @@ $(function() {
 							contents += "</tr>";
 							$("#raspberrypiManagementTable").append(contents);
 						}
+						contents = "";
+						contents += "</tbody>";
+						$("#raspberrypiManagementTable").append(contents);
 					}
 			   	}
 			});
@@ -302,8 +351,12 @@ $(function() {
 			    dataType: 'json',
 				success : function(data){
 					if (data.length > 0) {
+						
+						$(".content-panel").css("display","");
+						
 						var menu = "";
 						
+						menu += "<thead>";
 						menu += "<tr>";
 						menu += "<td><strong>라즈베리파이IP</strong></td>";
 						menu += "<td><strong>장소</strong></td>";
@@ -313,6 +366,9 @@ $(function() {
 						menu += "<td><strong>상태 값</strong></td>";
 						menu += "<td><strong>0 = 사용x<br>1 = 사용o</strong></td>";
 						menu += "</tr>";
+						menu += "</thead>";
+						menu += "<tbody>";
+						
 						$("#raspberrypiManagementTable").append(menu);
 						
 						for (i = 0; i < data.length; i++) {
@@ -329,6 +385,9 @@ $(function() {
 							contents += "</tr>";
 							$("#raspberrypiManagementTable").append(contents);
 						}
+						contents = "";
+						contents += "</tbody>";
+						$("#raspberrypiManagementTable").append(contents);
 					}	
 			   	}
 			});
@@ -340,8 +399,12 @@ $(function() {
 			    dataType: 'json',
 				success : function(data){
 					if (data.length > 0) {
+						
+						$(".content-panel").css("display","");
+						
 						var menu = "";
 						
+						menu += "<thead>";
 						menu += "<tr>";
 						menu += "<td><strong>라즈베리파이IP</strong></td>";
 						menu += "<td><strong>장소</strong></td>";
@@ -351,11 +414,14 @@ $(function() {
 						menu += "<td><strong>상태 값</strong></td>";
 						menu += "<td><strong>0 = 사용x<br>1 = 사용o</strong></td>";
 						menu += "</tr>";
+						menu += "</thead>";
+						menu += "<tbody>";
+						
 						$("#raspberrypiManagementTable").append(menu);
 						
 						for (i = 0; i < data.length; i++) {
 							var contents ="";
-							console.log(data[i].raspberrypiIp);
+							
 							contents += "<tr>";
 							contents += "<td>" + data[i].raspberrypiIp + "</td>";
 							contents += "<td>" + data[i].placeName + "</td>";
@@ -367,6 +433,9 @@ $(function() {
 							contents += "</tr>";
 							$("#raspberrypiManagementTable").append(contents);
 						}
+						contents = "";
+						contents += "</tbody>";
+						$("#raspberrypiManagementTable").append(contents);
 					}
 			   	}
 			});

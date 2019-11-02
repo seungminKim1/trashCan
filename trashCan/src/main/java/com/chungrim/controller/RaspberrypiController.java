@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.chungrim.service.MappingService;
 import com.chungrim.service.RaspberrypiService;
 import com.chungrim.vo.RaspberrypiVO;
 
@@ -21,7 +22,9 @@ public class RaspberrypiController {
 
 	@Inject
 	private RaspberrypiService piService;
-
+	@Inject
+	private MappingService mappingService;
+		
 	// 라즈베리파이 등록 Form
 	@RequestMapping(value = "/raspberrypi/RegisterForm.do")
 	public ModelAndView registerForm() throws Exception {
@@ -32,11 +35,18 @@ public class RaspberrypiController {
 		gender = piService.getGenderList();
 		place = piService.getPlaceList();
 		ModelAndView mav = new ModelAndView();
-
+		
 		mav.setViewName("raspberrypi/raspberrypiRegisterForm");
 		mav.addObject("place", place);
 		mav.addObject("gender", gender);
 		mav.addObject("floor", floor);
+		
+		int piCount = mappingService.piCount();
+		int cleanCount = mappingService.cleanCount();
+		int mapCount = mappingService.mapCount();
+		mav.addObject("piCount", piCount);
+		mav.addObject("cleanCount", cleanCount);
+		mav.addObject("mapCount", mapCount);
 
 		return mav;
 	}
@@ -137,7 +147,14 @@ public class RaspberrypiController {
 
 		mav.setViewName("raspberrypi/raspberrypiManagement");
 		mav.addObject("place", piPlace);
-
+		
+		int piCount = mappingService.piCount();
+		int cleanCount = mappingService.cleanCount();
+		int mapCount = mappingService.mapCount();
+		mav.addObject("piCount", piCount);
+		mav.addObject("cleanCount", cleanCount);
+		mav.addObject("mapCount", mapCount);
+		
 		return mav;
 	}
 	

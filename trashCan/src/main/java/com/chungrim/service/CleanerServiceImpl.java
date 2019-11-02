@@ -4,6 +4,7 @@ import java.util.List;
 import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 import com.chungrim.dao.CleanerDAO;
+import com.chungrim.vo.CleanerDetailVO;
 import com.chungrim.vo.CleanerVO;
 
 @Service
@@ -17,6 +18,12 @@ public class CleanerServiceImpl implements CleanerService{
 			// TODO Auto-generated method stub
 			return cleanerDAO.cleanerList();
 		
+		}
+		
+		@Override
+		public CleanerVO selectCleanerInfo(CleanerVO cleaner) throws Exception{
+			
+			return cleanerDAO.selectCleanerInfo(cleaner);
 		}
 		
 		@Override
@@ -50,5 +57,22 @@ public class CleanerServiceImpl implements CleanerService{
 			// TODO Auto-generated method stub
 			return cleanerDAO.cleanerLicenseUpdate(cleanerVO);
 		}
+		
+		@Override
+		public CleanerVO checkCleanerInfo(CleanerVO cleaner) throws Exception{
+			return cleanerDAO.checkCleanerInfo(cleaner);
+		}
 
+		@Override
+		public List<CleanerDetailVO> selectCleanerDetailInfo(CleanerVO cleaner) throws Exception {
+			// TODO Auto-generated method stub
+			return cleanerDAO.selectCleanerDetailInfo(cleaner);
+		}
+
+		@Override
+		public CleanerVO selectToken() throws Exception {
+			// TODO Auto-generated method stub
+			return cleanerDAO.selectToken();
+		}
+		
 	}

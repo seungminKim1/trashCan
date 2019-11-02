@@ -11,9 +11,14 @@
 h3 {
 	font-family: 'Nanum Square';
 	color: #2DB400;
-	font-size: 35px;
 }
-
+.piFormCont {
+	margin : 170px auto;
+	width : 70%;
+	border : 1px solid #eee;
+	border-radius : 10px;
+	box-shadow: 0 5px 5px #f1f3f6;
+}
 .raspberrypiForm table {
 	padding-top: 10px;
 	margin: 0 auto;
@@ -36,4 +41,5 @@ td input {
 	background-color: #2DB400;
 	border: none;
 	color: white;
+	margin : 10px 0;
 }

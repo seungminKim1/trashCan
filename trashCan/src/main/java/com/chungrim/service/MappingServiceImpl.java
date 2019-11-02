@@ -1,7 +1,6 @@
 package com.chungrim.service;
 
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,9 +17,9 @@ public class MappingServiceImpl implements MappingService {
 	private MappingDAO mappingDAO;
 	
 	@Override
-	public List<RaspberrypiVO> selectPI() throws Exception {
+	public List<RaspberrypiVO> selectPI(int i) throws Exception {
 		// TODO Auto-generated method stub
-		return mappingDAO.selectPI();
+		return mappingDAO.selectPI(i);
 	}
 
 	@Override
@@ -58,5 +57,24 @@ public class MappingServiceImpl implements MappingService {
 		// TODO Auto-generated method stub
 		return mappingDAO.updateMap(str);
 	}
-	
+
+	@Override
+	public int cleanCount() throws Exception {
+		// TODO Auto-generated method stub
+		return mappingDAO.cleanCount();
+	}
+
+	@Override
+	public int piCount() throws Exception {
+		// TODO Auto-generated method stub
+		return mappingDAO.piCount();
+	}
+
+	@Override
+	public int mapCount() throws Exception {
+		// TODO Auto-generated method stub
+		return mappingDAO.mapCount();
+		
+	}
 }
+	

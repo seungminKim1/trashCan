@@ -11,12 +11,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.chungrim.service.CleanerService;
+import com.chungrim.service.MappingService;
 import com.chungrim.vo.CleanerVO;
 
 @Controller
 public class CleanerController {
 	@Inject
 	private CleanerService cleanerService;
+	
+	@Inject
+	private MappingService mappingService;
 
 	@RequestMapping(value = "cleaner/cleanerList.do")
 	public ModelAndView cleanerList() throws Exception {
@@ -27,6 +31,13 @@ public class CleanerController {
 		if (cleanerVO != null) {
 			mav.setViewName("cleaner/cleanerList");
 			mav.addObject("cleaner", cleanerVO);
+			
+			int piCount = mappingService.piCount();
+			int cleanCount = mappingService.cleanCount();
+			int mapCount = mappingService.mapCount();
+			mav.addObject("piCount", piCount);
+			mav.addObject("cleanCount", cleanCount);
+			mav.addObject("mapCount", mapCount);
 		} else {
 			mav.addObject("msg", "cleanerListFail");
 			mav.setViewName("main/main");
@@ -74,6 +85,14 @@ public class CleanerController {
 		if (cleanerVO != null) {
 			mav.setViewName("cleaner/cleanerLicense");
 			mav.addObject("cleaner", cleanerVO);
+			
+			int piCount = mappingService.piCount();
+			int cleanCount = mappingService.cleanCount();
+			int mapCount = mappingService.mapCount();
+			mav.addObject("piCount", piCount);
+			mav.addObject("cleanCount", cleanCount);
+			mav.addObject("mapCount", mapCount);
+			
 		} else {
 			mav.addObject("msg", "cleanerLicenseFail");
 			mav.setViewName("main/main");
