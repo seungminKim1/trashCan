@@ -7,5 +7,5 @@
   * SPRING
 * DB
   * MySQL
-* ![login](/login.png)
+* ![login](https://github.com/seungminKim1/trashCan/blob/trashCan/login.PNG)
   
