@@ -2,7 +2,7 @@
 쓰레기통의 총량,비운횟수,사용자 및 쓰레기통 매핑 후 일간,주간,월간 통계 
 # Info
 * Language
-  * Java,Jsp
+  * Java,Jsp,Javascript,html,JQuery,Ajax
 * Framework  
   * SPRING
 * DB
